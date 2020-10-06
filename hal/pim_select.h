@@ -61,7 +61,7 @@ extern "C" {
 #endif
     
 /* Define for Internal OP-AMP PIM. For external, undefine */
-#define     INTERNAL_OPAMP_PIM   
+#undef     INTERNAL_OPAMP_PIM   
     
 #ifdef	__cplusplus
 }

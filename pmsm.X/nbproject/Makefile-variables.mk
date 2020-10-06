@@ -1,0 +1,20 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+# MCLV2 configuration
+CND_ARTIFACT_DIR_MCLV2=dist/MCLV2/production
+CND_ARTIFACT_NAME_MCLV2=pmsm.X.production.hex
+CND_ARTIFACT_PATH_MCLV2=dist/MCLV2/production/pmsm.X.production.hex
+CND_PACKAGE_DIR_MCLV2=${CND_DISTDIR}/MCLV2/package
+CND_PACKAGE_NAME_MCLV2=pmsm.x.tar
+CND_PACKAGE_PATH_MCLV2=${CND_DISTDIR}/MCLV2/package/pmsm.x.tar
+# MCHV2_MCHV3 configuration
+CND_ARTIFACT_DIR_MCHV2_MCHV3=dist/MCHV2_MCHV3/production
+CND_ARTIFACT_NAME_MCHV2_MCHV3=pmsm.X.production.hex
+CND_ARTIFACT_PATH_MCHV2_MCHV3=dist/MCHV2_MCHV3/production/pmsm.X.production.hex
+CND_PACKAGE_DIR_MCHV2_MCHV3=${CND_DISTDIR}/MCHV2_MCHV3/package
+CND_PACKAGE_NAME_MCHV2_MCHV3=pmsm.x.tar
+CND_PACKAGE_PATH_MCHV2_MCHV3=${CND_DISTDIR}/MCHV2_MCHV3/package/pmsm.x.tar

@@ -75,7 +75,7 @@
 /* Specify PWM Frequency in Hertz */
 #define PWMFREQUENCY_HZ         20000
 /* Specify dead time in micro seconds */
-#define DEADTIME_MICROSEC       1.0
+#define DEADTIME_MICROSEC       10.0//Changed by Wang Bing
 /* Specify PWM Period in seconds, (1/ PWMFREQUENCY_HZ) */
 #define LOOPTIME_SEC            0.00005
 /* Specify PWM Period in micro seconds */

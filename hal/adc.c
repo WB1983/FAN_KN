@@ -190,7 +190,7 @@ void InitADCModule1()
     AD1CHS0bits.CH0SB = 0;  // 0b000000 (Not used in this application)
     AD1CHS0bits.CH0NA = 0;  // 0 = Channel 0 negative input is VREFL
     // CH0 is used for measuring voltage set by speed reference potentiometer
-    AD1CHS0bits.CH0SA = ADC1_ANx_CH0;
+    AD1CHS0bits.CH0SA = ANx_Vbus;
     
     // AD1CSSH: ADC1 INPUT SCAN SELECT REGISTER HIGH
     // CSS(31-16): ADC Input Scan Selection bits
