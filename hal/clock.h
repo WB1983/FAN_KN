@@ -67,7 +67,7 @@
 #define OSC_FRC                 0               // Internal RC Oscllator
 #define OSC_XTAL                1               // Primary oscillator - XTAL
 // Select Oscillator Mode
-#define OSC_MODE                OSC_XTAL
+#define OSC_MODE                OSC_FRC
         
 // Oscillator frequency (Hz) - 140,000,000 Hz
 #define FOSC                    140000000UL

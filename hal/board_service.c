@@ -91,17 +91,7 @@ void BoardServiceStepIsr(void)
 }
 void BoardService(void)
 {
-    if (boardServiceISRCounter ==  BOARD_SERVICE_TICK_COUNT)
-    {
-        /* Button scanning loop for Button 1 to start Motor A */
-        ButtonScan(&buttonStartStop,BUTTON_START_STOP);
-#ifdef MCLV2
-        /* Button scanning loop for SW2 to enter into filed
-            weakening mode */
-        ButtonScan(&buttonSpeedHalfDouble,BUTTON_SPEED_HALF_DOUBLE);
-#endif
-        boardServiceISRCounter = 0;
-    }
+
 }
 void BoardServiceInit(void)
 {
@@ -180,7 +170,7 @@ void Init_Peripherals(void)
     InitADCModule1();
     
     /* Initialize comparator and amplifiers */
-    InitAmplifiersComparator();
+    //InitAmplifiersComparator();
 }
 
 void HAL_MC1PWMEnableOutputs(void)

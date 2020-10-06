@@ -103,6 +103,14 @@ uint16_t AccumThetaCnt = 0;	// Counter used to calculate motor speed. Is increme
 						// calculated. This N is diIrpPerCalc which is defined in
 						// UserParms.h.
 volatile uint16_t measCurrOffsetFlag = 0;
+uint16_t ChekLoopStatus = 0;
+uint16_t ChekLoopStatus2 =0;
+
+uint8_t MotorControlOnOff = 1;
+uint16_t MotorSpeedAdjust = 20000;//speed = x*(max - normal) +normal 
+uint8_t WDSwapFlag = 0;
+uint8_t ucCount;
+uint8_t ucCount2;
 
 void InitControlParameters(void);
 void DoControl(void);
@@ -110,6 +118,20 @@ void CalculateParkAngle(void);
 void ResetParmeters(void);
 void MeasCurrOffset(int16_t *,int16_t *);
 
+
+void MAIN_vWDSWAP(void)
+{
+    if (WDSwapFlag == 0)
+    {
+        WDSwapFlag = 1;
+        EXT_WD = 0;
+    }
+    else
+    {
+        WDSwapFlag = 0;
+        EXT_WD = 1;
+    }
+}
 // *****************************************************************************
 /* Function:
    main()
@@ -136,27 +158,30 @@ void MeasCurrOffset(int16_t *,int16_t *);
 
 int main ( void )
 {
+    
     /* Initialize Peripherals */
     Init_Peripherals();
-
-	/* Turn on LED2 to indicate the device is programmed */
-    LED2 = 1;
 
     /* Initializing Current offsets in structure variable */
     MeasCurrOffset(&measCurrParm.Offseta,&measCurrParm.Offsetb);
 
-    DiagnosticsInit();
+    //DiagnosticsInit();
 
-    BoardServiceInit();
+    //BoardServiceInit();
 
     CORCONbits.SATA = 1;
     CORCONbits.SATB = 1;
     CORCONbits.ACCSAT = 1;
 
     CORCONbits.SATA = 0;
-
+    
+    MAIN_vWDSWAP();
     while(1)
     {
+        MAIN_vWDSWAP();
+        
+        INRUSH_RELAY = 1;
+        
         /* Initialize PI control parameters */
         InitControlParameters();
 
@@ -171,33 +196,34 @@ int main ( void )
 
         while(1)
         {
-            DiagnosticsStepMain();
-            BoardService();
+            MAIN_vWDSWAP();
+            
+            //DiagnosticsStepMain();
+            //BoardService();
 
-            if (IsPressed_Button1())
+            if (MotorControlOnOff == 1)
             {
                 if (uGF.bits.RunMotor == 1)
                 {
-                    ResetParmeters();
-					trans_counter = 0;
-                    LED1 = 0;
+                    //ResetParmeters();
+					//trans_counter = 0;
                 }
                 else
                 {
 					HAL_MC1PWMEnableOutputs();
                     uGF.bits.RunMotor = 1;
-                    LED1 = 1;
                 }
 
             }
 #ifdef MCLV2    // Monitoring for Button 2 press in MCLV2
-                if (IsPressed_Button2())
+                /*if (IsPressed_Button2())
                 {
                     if ((uGF.bits.RunMotor == 1) && (uGF.bits.OpenLoop == 0))
                     {
                         uGF.bits.ChangeSpeed = !uGF.bits.ChangeSpeed;
                     }
                 }
+                  */
 #endif
 
         }//inner while loop
@@ -288,9 +314,10 @@ void DoControl( void )
 {
     /* Temporary variables for sqrt calculation of q reference */
     volatile int16_t temp_qref_pow_q15;
-
+    
     if (uGF.bits.OpenLoop)
     {
+        ChekLoopStatus ++;
         /* OPENLOOP:  force rotating angle,Vd and Vq */
         if (uGF.bits.ChangeMode)
         {
@@ -361,13 +388,14 @@ void DoControl( void )
     else
     /* Closed Loop Vector Control */
     {
+        ChekLoopStatus2 ++;
         /* if change speed indication, double the speed */
         if (uGF.bits.ChangeSpeed)
         {
             /* read unsigned ADC */
-            ReadADC0(ADCBUF_SPEED_REF_A,&readADCParm);
+            //ReadADC0(ADCBUF_SPEED_REF_A,&readADCParm);
 
-            readADCParm.qAnRef = (__builtin_muluu(readADCParm.qADValue,
+            readADCParm.qAnRef = (__builtin_muluu(MotorSpeedAdjust,
                     MAXIMUMSPEED_ELECTR-NOMINALSPEED_ELECTR)>>15)+
                     NOMINALSPEED_ELECTR;
 
@@ -527,14 +555,16 @@ void DoControl( void )
  */
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
+    ucCount ++;
     if ( uGF.bits.RunMotor )
     {
+        ucCount2 ++;
         /* Calculate qIa,qIb */
         MeasCompCurr(ADCBUF_INV_A_IPHASE1, ADCBUF_INV_A_IPHASE2,&measCurrParm);
         
         iabc.a = measCurrParm.qIa;
         iabc.b = measCurrParm.qIb;
-
+        iabc.c = - iabc.a- iabc.b;
         /* Calculate qIalpha,qIbeta from qIa,qIb */
         MC_TransformClarke_Assembly(&iabc,&ialphabeta);
 

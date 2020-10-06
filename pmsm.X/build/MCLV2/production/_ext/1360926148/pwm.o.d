@@ -1,0 +1,8 @@
+build/MCLV2/production/_ext/1360926148/pwm.o:  \
+../hal/pwm.c  \
+../hal/pwm.h  \
+ ../hal/clock.h  \
+../userparms.h  \
+../hal/pim_select.h  \
+../hal/delay.h  \
+ ../hal/pim_select.h 

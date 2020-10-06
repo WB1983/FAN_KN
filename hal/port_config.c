@@ -208,25 +208,25 @@ void MapGPIOHWFunction(void)
 
 #else
 
-    // IPHASE2_A/IB_A(AN0) : PIM #42
+    // IPHASE2_A/IB_A(AN0) : 
     TRISAbits.TRISA0 = 1;    // AN0/OA2OUT/RA0
     ANSELAbits.ANSA0 = 1;
 
-    // IPHASE1_A/IA_A(AN1) : PIM #41
+    // IPHASE1_A/IA_A(AN1) : 
     TRISAbits.TRISA1 = 1;    // AN1/C2IN1+/RA1
     ANSELAbits.ANSA1 = 1;
 
     // FAULT Pins
     // FAULT : PIM #18
     TRISBbits.TRISB4 = 1;            // FLT32/SCL2/RP36/RB4
+    //this pin can't be remap, need adjust after confirm with MICROCHIP.
     RPINR12bits.FLT1R = 32;          // Make Pin RP32 FLT I/P
 
 #endif
 
-    // Potentiometer #1 input - used as Speed Reference
-    // POT1 : PIM #32
-    TRISEbits.TRISE13 = 1;          // AN13/C3IN2-/U2CTS/RE13
-    ANSELEbits.ANSE13 = 1;
+    // don't use.
+    TRISBbits.TRISB0 = 1;          // AN2/RPI28/RB0
+    ANSELBbits.ANSB0 = 1;
 
     // Inverter DC bus voltage Sensing
     // VBUS_A : PIM #35
@@ -249,17 +249,21 @@ void MapGPIOHWFunction(void)
     TRISBbits.TRISB10 = 0 ;
     TRISBbits.TRISB11 = 0 ;
 
-    // Debug LEDs
-    // LED1 : PIM #01
+    // 
+    //WD output  : 
     TRISDbits.TRISD5 = 0;           // AN56/RA10
-    // LED2 : PIM #60
-    TRISDbits.TRISD6 = 0;           // RPI72/RD8
+    
+    //relay control pin
+    TRISGbits.TRISG8 = 0;           // AN56/RA10
+    
+    // input pin : watchdog input pin
+    TRISDbits.TRISD6 = 1;           // RPI72/RD8
 
     // Push button Switches
 #ifdef MCLV2
-    // SW1 : PIM #83
+    // PWM control1 : 
     TRISGbits.TRISG7 = 1;            // AN30/CVREF+/RPI52/RC4
-    // SW2 : PIM #84
+    // PWM control2 : 
     TRISGbits.TRISG6 = 1;            // AN19/RP118/RG6
 #endif
 
@@ -267,15 +271,15 @@ void MapGPIOHWFunction(void)
     // Push Button : PIM #68
     TRISBbits.TRISB8 = 1;   // PIN48: RB8
 #endif
-
+/*disable it
     // UART - for RTDM/DMCI Communication
     // UART_RX : PIM #49 (Input)
     TRISCbits.TRISC5 = 1;            // SCL1/RPI53/RC5
     // UART_TX : PIM #50(Output)
     TRISFbits.TRISF1 = 0;            // RP97/RF1
-
+*/
     /************************** Re-mappable Pin Configuration ******************/
-
+/*disable it
     //Unlock registers by clearing IOLOCK bit OSCCON(OSCONbits.IOLOCK = 0)
     __builtin_write_OSCCONL(OSCCON & (~(1 << 6))); 
 
@@ -289,7 +293,7 @@ void MapGPIOHWFunction(void)
 
     // Lock registers by setting IOLOCK bit OSCCON(OSCONbits.IOLOCK = 1)
     __builtin_write_OSCCONL(OSCCON | (1 << 6)); // Set bit 6
-
+*/
     /**************************************************************************/
     return;
 }

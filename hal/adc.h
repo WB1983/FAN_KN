@@ -68,7 +68,7 @@
 // ADC MODULE Related Definitions
 // Analog Channel No of Potentiometer #1 - used as Speed Reference
 // POT1 : PIM #32 (AN13)
-#define ANx_POT_1               13
+#define ANx_Vbus               10
 // Analog Channel No of Inverter A DC bus voltage VDC_A
 // VBUS_A : PIM #35 (AN10)
 #define ANx_VBUS_A              10
@@ -109,7 +109,7 @@
 
 // Setting Channel No connected to ADC1 Sample/Hold Channel #0(ADC1-CH0)
 // POT1 is connected for sample/conversion by ADC1 CH0
-#define ADC1_ANx_CH0            ANx_POT_1
+#define ADC1_ANx_CH0            ANx_Vbus
 // Setting Channels to be connected to ADC1 Sample/Hold Channels 1,2,3
 // for simultaneous sampling  : AN0(IB),AN1(IA),AN2(IBUS)
 #define ADC1_ANx_CH123          CH123_IS_AN0_AN1_AN2
