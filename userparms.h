@@ -107,9 +107,9 @@ controllers, tuning mode will disable the speed PI controller */
 /* Motor's number of pole pairs */
 #define NOPOLESPAIRS 5
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 500
+//#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    800
+#define NOMINAL_SPEED_RPM    500
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
 #define MAXIMUM_SPEED_RPM    1000
 
@@ -175,7 +175,7 @@ before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
 #define LOCK_TIME 10000
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 400
+#define END_SPEED_RPM 300
 /* Open loop acceleration */
 #define OPENLOOP_RAMPSPEED_INCREASERATE 1//change to 1 from 10
 /* Open loop q current setup - */
@@ -194,7 +194,7 @@ before the open loop speed ramp up */
 /* In case of the potentiometer speed reference, a reference ramp
 is needed for assuring the motor can follow the reference imposed /
 minimum value accepted */
-#define SPEEDREFRAMP   Q15(0.00003)
+#define SPEEDREFRAMP   Q15(0.00001)
 
 /* The Speed Control Loop Executes every  SPEEDREFRAMP_COUNT */
 #define SPEEDREFRAMP_COUNT   3

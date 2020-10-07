@@ -414,7 +414,7 @@ void DoControl( void )
             /* Speed pot ref max value +-8190 */
             //readADCParm.qAnRef = (MotorSpeedAdjust - 400)*5 +
                     ENDSPEED_ELECTR;
-            uiTargetSpeed = ENDSPEED_ELECTR;
+            uiTargetSpeed = NOMINAL_SPEED_RPM*NOPOLESPAIRS;
 
               if (uiTargetSpeed < ENDSPEED_ELECTR)
                 {

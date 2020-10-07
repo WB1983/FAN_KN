@@ -91,7 +91,17 @@ void BoardServiceStepIsr(void)
 }
 void BoardService(void)
 {
-
+    if (boardServiceISRCounter ==  BOARD_SERVICE_TICK_COUNT)
+    {
+        /* Button scanning loop for Button 1 to start Motor A */
+        //ButtonScan(&buttonStartStop,BUTTON_START_STOP);
+#ifdef MCLV2
+        /* Button scanning loop for SW2 to enter into filed
+            weakening mode */
+//        ButtonScan(&buttonSpeedHalfDouble,BUTTON_SPEED_HALF_DOUBLE);
+#endif
+        boardServiceISRCounter = 0;
+    }
 }
 void BoardServiceInit(void)
 {
@@ -127,12 +137,7 @@ void ButtonGroupInitialize(void)
 {
     buttonStartStop.state = BUTTON_NOT_PRESSED;
     buttonStartStop.debounceCount = 0;
-    buttonStartStop.state = false;
-#ifdef MCLV2    
-    buttonSpeedHalfDouble.state = BUTTON_NOT_PRESSED;
-    buttonSpeedHalfDouble.debounceCount = 0;
-    buttonSpeedHalfDouble.state = false;
-#endif	  
+    buttonStartStop.state = false;	  
 }
 /* Function:
     InitPeripherals()
