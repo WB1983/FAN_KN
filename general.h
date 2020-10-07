@@ -46,7 +46,7 @@ extern "C" {
 ((Float_Value < 0.0) ? (int16_t)(32768 * (Float_Value) - 0.5) \
 : (int16_t)(32767 * (Float_Value) + 0.5))
 
- #define _0_05DEG 9	// The value for 0.05 degrees is converted
+ #define _0_05DEG 1	// The value for 0.05 degrees is converted
 					// to Q15 as follows:
 					// .05 * 32768 / 180 = 9.1, approx 9.   
 

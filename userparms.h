@@ -82,7 +82,7 @@ constant slope. The slope is determined by TUNING_DELAY_RAMPUP constant.
 
 /* open loop continuous functioning */
 /* closed loop transition disabled  */
-#define OPEN_LOOP_FUNCTIONING
+#undef OPEN_LOOP_FUNCTIONING
 
 /* Definition for torque mode - for a separate tuning of the current PI
 controllers, tuning mode will disable the speed PI controller */
@@ -109,21 +109,21 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 #define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    1200
+#define NOMINAL_SPEED_RPM    800
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
-#define MAXIMUM_SPEED_RPM    1500
+#define MAXIMUM_SPEED_RPM    1000
 
-#define FW_NOMINAL_SPEED_RPM 1500
+#define FW_NOMINAL_SPEED_RPM 1800
 
 /* The following values are given in the xls attached file */
-#define NORM_CURRENT_CONST     0.000610
+#define NORM_CURRENT_CONST     0.000629
 
 /* normalized ls/dt value */
-#define NORM_LSDTBASE 593
+#define NORM_LSDTBASE 606
 /* normalized rs value */
 #define NORM_LSDTBASE_SCALINGFACTOR 8
 
-#define NORM_RS  325
+#define NORM_RS  370
 #define NORM_RS_SCALINGFACTOR 1
 #endif
 
@@ -175,11 +175,11 @@ before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
 #define LOCK_TIME 10000
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 500
+#define END_SPEED_RPM 400
 /* Open loop acceleration */
 #define OPENLOOP_RAMPSPEED_INCREASERATE 1//change to 1 from 10
 /* Open loop q current setup - */
-#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.0)
+#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(4.0)
 
 /* Maximum motor speed converted into electrical speed */
 #define MAXIMUMSPEED_ELECTR MAXIMUM_SPEED_RPM*NOPOLESPAIRS
@@ -202,20 +202,20 @@ minimum value accepted */
 #ifdef MCLV2
 
 /* D Control Loop Coefficients */
-#define D_CURRCNTR_PTERM       Q15(0.02)
-#define D_CURRCNTR_ITERM       Q15(0.002)
+#define D_CURRCNTR_PTERM       Q15(0.12)
+#define D_CURRCNTR_ITERM       Q15(0.12)
 #define D_CURRCNTR_CTERM       Q15(0.999)
 #define D_CURRCNTR_OUTMAX      0x7FFF
 
 /* Q Control Loop Coefficients */
-#define Q_CURRCNTR_PTERM       Q15(0.02)
-#define Q_CURRCNTR_ITERM       Q15(0.002)
+#define Q_CURRCNTR_PTERM       Q15(0.12)
+#define Q_CURRCNTR_ITERM       Q15(0.12)
 #define Q_CURRCNTR_CTERM       Q15(0.999)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
 
 /* Velocity Control Loop Coefficients */
-#define SPEEDCNTR_PTERM        Q15(0.5)
-#define SPEEDCNTR_ITERM        Q15(0.005)
+#define SPEEDCNTR_PTERM        Q15(0.4)
+#define SPEEDCNTR_ITERM        Q15(0.004)
 #define SPEEDCNTR_CTERM        Q15(0.999)
 #define SPEEDCNTR_OUTMAX       0x5000
 

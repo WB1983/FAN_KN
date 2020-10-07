@@ -107,11 +107,12 @@ uint16_t ChekLoopStatus = 0;
 uint16_t ChekLoopStatus2 =0;
 
 uint8_t MotorControlOnOff = 1;
-uint16_t MotorSpeedAdjust = 20000;//speed = x*(max - normal) +normal 
+uint16_t MotorSpeedAdjust = 400;//speed = x*(max - normal) +normal 
 uint8_t WDSwapFlag = 0;
 uint8_t ucCount;
 uint8_t ucCount2;
-
+int16_t uiTargetSpeed;
+        
 void InitControlParameters(void);
 void DoControl(void);
 void CalculateParkAngle(void);
@@ -394,7 +395,7 @@ void DoControl( void )
         {
             /* read unsigned ADC */
             //ReadADC0(ADCBUF_SPEED_REF_A,&readADCParm);
-
+            /*
             readADCParm.qAnRef = (__builtin_muluu(MotorSpeedAdjust,
                     MAXIMUMSPEED_ELECTR-NOMINALSPEED_ELECTR)>>15)+
                     NOMINALSPEED_ELECTR;
@@ -402,22 +403,22 @@ void DoControl( void )
                 if (readADCParm.qAnRef > MAXIMUMSPEED_ELECTR)
                 {
                     readADCParm.qAnRef = MAXIMUMSPEED_ELECTR;
-                }
+                }*/
         }
         else
         {
             /* Read unsigned values */
-            ReadADC0(ADCBUF_SPEED_REF_A,&readADCParm);
+            //ReadADC0(ADCBUF_SPEED_REF_A,&readADCParm);
 
             /* ADC values are shifted with 2 */
             /* Speed pot ref max value +-8190 */
-            readADCParm.qAnRef = (__builtin_muluu(readADCParm.qADValue,
-                    NOMINALSPEED_ELECTR-ENDSPEED_ELECTR)>>15) +
+            //readADCParm.qAnRef = (MotorSpeedAdjust - 400)*5 +
                     ENDSPEED_ELECTR;
+            uiTargetSpeed = ENDSPEED_ELECTR;
 
-              if (readADCParm.qAnRef < ENDSPEED_ELECTR)
+              if (uiTargetSpeed < ENDSPEED_ELECTR)
                 {
-                    readADCParm.qAnRef =  ENDSPEED_ELECTR;
+                    uiTargetSpeed =  ENDSPEED_ELECTR;
                 }
         }
         
@@ -429,7 +430,7 @@ void DoControl( void )
         {
             /* Ramp generator to limit the change of the speed reference
               the rate of change is defined by CtrlParm.qRefRamp */
-            ctrlParm.qDiff = ctrlParm.qVelRef - readADCParm.qAnRef;
+            ctrlParm.qDiff = ctrlParm.qVelRef - uiTargetSpeed;
             /* Speed Ref Ramp */
             if (ctrlParm.qDiff < 0)
             {
@@ -446,7 +447,7 @@ void DoControl( void )
             directly from the pot */
             if (_Q15abs(ctrlParm.qDiff) < (ctrlParm.qRefRamp << 1))
             {
-                ctrlParm.qVelRef = readADCParm.qAnRef;
+                ctrlParm.qVelRef = uiTargetSpeed;
             }
             ctrlParm.speedRampCount = 0;
         }
