@@ -168,7 +168,7 @@ int main ( void )
 
     //DiagnosticsInit();
 
-    //BoardServiceInit();
+    BoardServiceInit();
 
     CORCONbits.SATA = 1;
     CORCONbits.SATB = 1;
@@ -200,7 +200,7 @@ int main ( void )
             MAIN_vWDSWAP();
             
             //DiagnosticsStepMain();
-            //BoardService();
+            BoardService();
 
             if (MotorControlOnOff == 1)
             {
@@ -414,7 +414,7 @@ void DoControl( void )
             /* Speed pot ref max value +-8190 */
             //readADCParm.qAnRef = (MotorSpeedAdjust - 400)*5 +
                     ENDSPEED_ELECTR;
-            uiTargetSpeed = ENDSPEED_ELECTR;
+            uiTargetSpeed = NOMINAL_SPEED_RPM*NOPOLESPAIRS;
 
               if (uiTargetSpeed < ENDSPEED_ELECTR)
                 {
@@ -632,7 +632,7 @@ void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 		measCurrOffsetFlag = 1;
     }
 
-    DiagnosticsStepIsr();
+    //DiagnosticsStepIsr();
     BoardServiceStepIsr();
 
     /* Clear Interrupt Flag */
