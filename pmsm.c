@@ -168,7 +168,7 @@ int main ( void )
 
     //DiagnosticsInit();
 
-    //BoardServiceInit();
+    BoardServiceInit();
 
     CORCONbits.SATA = 1;
     CORCONbits.SATB = 1;
@@ -200,7 +200,7 @@ int main ( void )
             MAIN_vWDSWAP();
             
             //DiagnosticsStepMain();
-            //BoardService();
+            BoardService();
 
             if (MotorControlOnOff == 1)
             {
@@ -632,7 +632,7 @@ void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 		measCurrOffsetFlag = 1;
     }
 
-    DiagnosticsStepIsr();
+    //DiagnosticsStepIsr();
     BoardServiceStepIsr();
 
     /* Clear Interrupt Flag */

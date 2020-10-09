@@ -94,7 +94,7 @@ void BoardService(void)
     if (boardServiceISRCounter ==  BOARD_SERVICE_TICK_COUNT)
     {
         /* Button scanning loop for Button 1 to start Motor A */
-        //ButtonScan(&buttonStartStop,BUTTON_START_STOP);
+        ButtonScan(&buttonStartStop,BUTTON_START_STOP);
 #ifdef MCLV2
         /* Button scanning loop for SW2 to enter into filed
             weakening mode */

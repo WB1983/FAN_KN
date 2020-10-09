@@ -63,6 +63,7 @@ extern "C" {
 /* Specify PWM Period in seconds, (1/ PWMFREQUENCY_HZ) */
 #define LOOPTIME_SEC            0.00005
 
+#undef SOLO_MOTOR
 /* Definition for tuning - if active the speed reference is a ramp with a 
 constant slope. The slope is determined by TUNING_DELAY_RAMPUP constant.
  the software ramp implementing the speed increase has a constant slope, 
@@ -109,7 +110,7 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    500
+#define NOMINAL_SPEED_RPM    1000
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
 #define MAXIMUM_SPEED_RPM    1000
 
@@ -175,11 +176,16 @@ before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
 #define LOCK_TIME 10000
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 300
+#define END_SPEED_RPM 350
 /* Open loop acceleration */
 #define OPENLOOP_RAMPSPEED_INCREASERATE 1//change to 1 from 10
+    
+#ifndef SOLO_MOTOR
 /* Open loop q current setup - */
 #define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(4.0)
+#else
+#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.0) 
+#endif
 
 /* Maximum motor speed converted into electrical speed */
 #define MAXIMUMSPEED_ELECTR MAXIMUM_SPEED_RPM*NOPOLESPAIRS
@@ -194,31 +200,59 @@ before the open loop speed ramp up */
 /* In case of the potentiometer speed reference, a reference ramp
 is needed for assuring the motor can follow the reference imposed /
 minimum value accepted */
-#define SPEEDREFRAMP   Q15(0.00001)
+#define SPEEDREFRAMP   Q15(0.00003)
 
 /* The Speed Control Loop Executes every  SPEEDREFRAMP_COUNT */
-#define SPEEDREFRAMP_COUNT   3
+#ifdef SOLO_MOTOR
+    #define SPEEDREFRAMP_COUNT   3
+#else
+#define SPEEDREFRAMP_COUNT   90
+#endif
+
 /* PI controllers tuning values - */
 #ifdef MCLV2
 
+#ifndef SOLO_MOTOR
 /* D Control Loop Coefficients */
-#define D_CURRCNTR_PTERM       Q15(0.12)
+#define D_CURRCNTR_PTERM       Q15(0.2)
+#define D_CURRCNTR_ITERM       Q15(0.15)
+#define D_CURRCNTR_CTERM       Q15(0.999)
+#define D_CURRCNTR_OUTMAX      0x7FFF
+
+/* Q Control Loop Coefficients */
+#define Q_CURRCNTR_PTERM       Q15(0.2)
+#define Q_CURRCNTR_ITERM       Q15(0.18)
+#define Q_CURRCNTR_CTERM       Q15(0.999)
+#define Q_CURRCNTR_OUTMAX      0x7FFF
+
+/* Velocity Control Loop Coefficients */
+#define SPEEDCNTR_PTERM        Q15(0.18)
+#define SPEEDCNTR_ITERM        Q15(0.00012)
+#define SPEEDCNTR_CTERM        Q15(0.999)
+#define SPEEDCNTR_OUTMAX       0x5000
+
+#else
+   /* D Control Loop Coefficients */
+#define D_CURRCNTR_PTERM       Q15(0.2)
 #define D_CURRCNTR_ITERM       Q15(0.12)
 #define D_CURRCNTR_CTERM       Q15(0.999)
 #define D_CURRCNTR_OUTMAX      0x7FFF
 
 /* Q Control Loop Coefficients */
-#define Q_CURRCNTR_PTERM       Q15(0.12)
+#define Q_CURRCNTR_PTERM       Q15(0.2)
 #define Q_CURRCNTR_ITERM       Q15(0.12)
 #define Q_CURRCNTR_CTERM       Q15(0.999)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
 
 /* Velocity Control Loop Coefficients */
-#define SPEEDCNTR_PTERM        Q15(0.4)
-#define SPEEDCNTR_ITERM        Q15(0.004)
+#define SPEEDCNTR_PTERM        Q15(0.3)
+#define SPEEDCNTR_ITERM        Q15(0.0002)
 #define SPEEDCNTR_CTERM        Q15(0.999)
 #define SPEEDCNTR_OUTMAX       0x5000
-
+    
+#endif
+    
+    
 #endif
 
 #ifdef MCHV2_MCHV3
