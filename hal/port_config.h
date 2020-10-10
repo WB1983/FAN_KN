@@ -70,9 +70,9 @@
 // Push button Switches
 #ifdef MCLV2
 
-#define PWM_INPUT1                  !PORTGbits.RG7
+#define PWM_INPUT1                  PORTGbits.RG7
 
-#define PWM_INPUT2                  !PORTGbits.RG6
+#define PWM_INPUT2                  PORTGbits.RG6
         
 #define WD_Feed                     PORTDbits.RD6
 

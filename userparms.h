@@ -110,7 +110,7 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    1000
+#define NOMINAL_SPEED_RPM    400
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
 #define MAXIMUM_SPEED_RPM    1000
 
@@ -176,7 +176,7 @@ before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
 #define LOCK_TIME 10000
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 350
+#define END_SPEED_RPM 300
 /* Open loop acceleration */
 #define OPENLOOP_RAMPSPEED_INCREASERATE 1//change to 1 from 10
     
@@ -184,7 +184,7 @@ before the open loop speed ramp up */
 /* Open loop q current setup - */
 #define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(4.0)
 #else
-#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.0) 
+#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.5) 
 #endif
 
 /* Maximum motor speed converted into electrical speed */
