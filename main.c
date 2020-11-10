@@ -28,9 +28,10 @@ int main ( void )
         //vButtonTest();
         MAM_vMotorControl();
         
+#ifndef TORQUE_MODE
         MAM_vMotorSpeedAdjustment();
         //vButtonTest();
-        
+#endif        
         
 
     }//inner while loop

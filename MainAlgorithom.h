@@ -71,11 +71,13 @@ typedef struct _TSlopingData
  	uint16_t uiMinSpeed;//system min speed
  }TSpeedControlParameter;
 
+
 typedef struct _TControlParameter
 {
     TBrakeParameter tBreakPara;//braking para
     TStartParameter tStartPara;//start para
     TSpeedControlParameter tSpeedControlParameter;//speed control parameter
+    
 }TControlParameter;
 
 typedef struct _TControlData
@@ -85,7 +87,24 @@ typedef struct _TControlData
     uint8_t  uiDescendAscend;//speed up or down
 }TControlData;
 
+typedef struct _TTorqueControlPara
+{
+    uint16_t uiMaxTorque;//system max speed
+ 	uint16_t uiMinTorque;//system min speed
+    uint16_t uiTorqueRampupStep;
+    uint16_t uiTorqueRampDowmStep;
+}TTorqueControlPara;
 
+typedef struct _TTorqueControlData
+{
+    int16_t iTorqueTempCtrlValue;
+    int16_t iTorqueDiffValue;
+    uint16_t uiTorqueRampCount;
+    uint16_t uiTorqueTargetValue;
+}TTorqueControlData;
+
+#define TORQUE_CONTROL_PARA_DEFAULT {NORM_CURRENT(2.0),NORM_CURRENT(1.0),1,1}
+#define TORQUE_CONTROL_DATA_DEFAULT {0,0,0,NORM_CURRENT(1.6)}
 enum SYS_STATE
 {
     SYS_IDLE,
@@ -116,6 +135,8 @@ enum DIRECTION
 #define CONTROL_INT_DATA {SYS_IDLE, 0, DESCENDING}
 
 #define OPL_RAMP_LIST_NR 12
+
+#define TORQUEREFRAMP_COUNT 200
 
 
 //#define DELAY_TIME 200//Milisecond
@@ -155,6 +176,8 @@ extern TBackEmf MAM_tGetBackEmf(void);
 extern void MAM_vMotorSpeedAdjustment(void);
 
 extern void MAM_vApplicationInitialization(void);
+
+extern void MAM_vSetTargetTorque(uint16_t uiTargetTorque);
 #ifdef	__cplusplus
 }
 #endif

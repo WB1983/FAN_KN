@@ -123,6 +123,8 @@ static uint32_t MAM_ulInterruptCount = 0;
 static uint8_t MAM_ucRampListID = 0;
 static uint16_t MAM_auiSpeedList[5] = {1200,1100,1000,800,600};
 static uint8_t MAM_ucSpeedListID = 0;
+static TTorqueControlPara  MAM_tTorqueControlPara = TORQUE_CONTROL_PARA_DEFAULT;
+static TTorqueControlData MAM_tTorqueControlData = TORQUE_CONTROL_DATA_DEFAULT;
 /****************************function declration***************************/        
 void InitControlParameters(void);
 void DoControl(void);
@@ -144,6 +146,10 @@ void MAM_vApplicationInitialization(void)
     
     MAM_tControlData.uiDescendAscend = DESCENDING;
     MAM_ucSpeedListID = 0;
+    
+    MAM_tTorqueControlData.iTorqueTempCtrlValue = 0;
+    MAM_tTorqueControlData.uiTorqueRampCount = 0;
+    
 }
 
 //open ramp solution
@@ -176,6 +182,7 @@ void MAM_vOpenLoopRamp(void)
  */
 void MAM_vRampup(void)
 {
+#ifndef TORQUE_MODE
         if (ctrlParm.speedRampCount < SPEEDREFRAMP_COUNT)
         {
 
@@ -208,6 +215,39 @@ void MAM_vRampup(void)
             }
             ctrlParm.speedRampCount = 0;
         }
+#else
+        if (MAM_tTorqueControlData.uiTorqueRampCount < TORQUEREFRAMP_COUNT)
+        {
+
+           MAM_tTorqueControlData.uiTorqueRampCount++;
+
+        }
+        else
+        {
+            /* Ramp generator to limit the change of the speed reference
+              the rate of change is defined by CtrlParm.qRefRamp */
+            MAM_tTorqueControlData.iTorqueDiffValue = MAM_tTorqueControlData.iTorqueTempCtrlValue - MAM_tTorqueControlData.uiTorqueTargetValue;
+            /* Speed Ref Ramp */
+            if (MAM_tTorqueControlData.iTorqueDiffValue < 0)
+            {
+                /* Set this cycle reference as the sum of
+                previously calculated one plus the reference ramp value */
+                MAM_tTorqueControlData.iTorqueTempCtrlValue = MAM_tTorqueControlData.iTorqueTempCtrlValue+MAM_tTorqueControlPara.uiTorqueRampupStep;
+            }
+            else
+            {
+                /* Same as above for speed decrease */
+                MAM_tTorqueControlData.iTorqueTempCtrlValue = MAM_tTorqueControlData.iTorqueTempCtrlValue-MAM_tTorqueControlPara.uiTorqueRampupStep;
+            }
+            /* If difference less than half of ref ramp, set reference
+            directly from the pot */
+            if (_Q15abs(MAM_tTorqueControlData.iTorqueDiffValue) < (MAM_tTorqueControlPara.uiTorqueRampupStep << 1))//???
+            {
+                MAM_tTorqueControlData.iTorqueTempCtrlValue = MAM_tTorqueControlData.uiTorqueTargetValue;
+            }
+            MAM_tTorqueControlData.uiTorqueRampCount = 0;
+        }
+#endif
 }
 /*Align algorithm*
  *
@@ -452,6 +492,7 @@ void DoControl( void )
         }
         /* Speed reference */
         MAM_vAlignAlgorithm();
+#ifndef TORQUE_MODE
         //MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = Q_CURRENT_REF_OPENLOOP;
         ctrlParm.qVelRef = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue;
         //ctrlParm.qVelRef = Q_CURRENT_REF_OPENLOOP;
@@ -460,7 +501,11 @@ void DoControl( void )
         for maximum startup torque, set the q current to maximum acceptable 
         value represents the maximum peak value */
         ctrlParm.qVqRef = ctrlParm.qVelRef;
-
+#else
+        ctrlParm.qVelRef = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue;
+        MAM_tTorqueControlData.iTorqueTempCtrlValue = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue;
+        ctrlParm.qVqRef = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue;
+#endif
         /* PI control for Q */
         piInputIq.inMeasure = idq.q;
         piInputIq.inReference = ctrlParm.qVqRef;
@@ -512,6 +557,9 @@ void DoControl( void )
             //piInputOmega.piState.integrator = (int32_t)ctrlParm.qVqRef << 13;
             piInputOmega.piState.integrator = (int32_t)ctrlParm.qVqRef << OPEN_CLOSE_INI_SPEED_INTEGRATE_SCALER;
             ctrlParm.qVelRef = ENDSPEED_ELECTR;
+#ifdef TORQUE_MODE
+            MAM_tTorqueControlData.iTorqueTempCtrlValue = ctrlParm.qVqRef;
+#endif
         }
 
         /* If TORQUE MODE skip the speed controller */
@@ -525,7 +573,8 @@ void DoControl( void )
                                            &piOutputOmega.out);
             ctrlParm.qVqRef = piOutputOmega.out;
         #else
-            ctrlParm.qVqRef = ctrlParm.qVelRef;
+            //ctrlParm.qVqRef = ctrlParm.qVelRef;
+            ctrlParm.qVqRef = MAM_tTorqueControlData.iTorqueTempCtrlValue;
         #endif
 
         /* Flux weakening control - the actual speed is replaced 
@@ -913,7 +962,11 @@ void MAM_vMotorControl(void)
             HAL_MC1PWMEnableOutputs();
             uGF.bits.RunMotor = 1;
             MAM_tControlData.uiSystemState = SYS_RUN;
+#ifndef TORQUE_MODE
             MAM_vSetTargetSpeed(NOMINAL_SPEED_RPM);
+#else
+            //MAM_vSetTargetTorque(NORM_CURRENT(1.5));
+#endif
         }
 
     }
@@ -1039,6 +1092,28 @@ void MAM_vSetTargetSpeed(uint16_t uiTargetSpeed)
         	 if(MAM_tControlData.uiTargetSpeed > MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed)
         	 {
         		 MAM_tControlData.uiTargetSpeed = MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed;
+        	 }
+
+         }
+    }
+}
+
+//set target speed interface
+void MAM_vSetTargetTorque(uint16_t uiTargetTorque)
+{
+    if(MAM_tControlData.uiSystemState == SYS_RUN)
+    {
+         MAM_tTorqueControlData.uiTorqueTargetValue = uiTargetTorque;
+
+         if (MAM_tTorqueControlData.uiTorqueTargetValue < MAM_tTorqueControlPara.uiMinTorque)
+            {
+                MAM_tTorqueControlData.uiTorqueTargetValue =  MAM_tTorqueControlPara.uiMinTorque;
+            }
+         else
+         {
+        	 if(MAM_tTorqueControlData.uiTorqueTargetValue > MAM_tTorqueControlPara.uiMaxTorque)
+        	 {
+        		 MAM_tTorqueControlData.uiTorqueTargetValue = MAM_tTorqueControlPara.uiMaxTorque;
         	 }
 
          }

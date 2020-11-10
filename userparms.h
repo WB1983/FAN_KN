@@ -63,7 +63,7 @@ extern "C" {
 /* Specify PWM Period in seconds, (1/ PWMFREQUENCY_HZ) */
 #define LOOPTIME_SEC            0.00005
 
-#undef SOLO_MOTOR
+#define SOLO_MOTOR
 /* Definition for tuning - if active the speed reference is a ramp with a 
 constant slope. The slope is determined by TUNING_DELAY_RAMPUP constant.
  the software ramp implementing the speed increase has a constant slope, 
@@ -87,7 +87,7 @@ constant slope. The slope is determined by TUNING_DELAY_RAMPUP constant.
 
 /* Definition for torque mode - for a separate tuning of the current PI
 controllers, tuning mode will disable the speed PI controller */
-#undef TORQUE_MODE
+#define TORQUE_MODE
 
 /*********************************** ADC Scaling ******************************/
 /* Scaling constants: Determined by calibration or hardware design. */
@@ -110,11 +110,11 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    1200
+#define NOMINAL_SPEED_RPM    600
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
-#define MAXIMUM_SPEED_RPM    1200
+#define MAXIMUM_SPEED_RPM    600
 
-#define FW_NOMINAL_SPEED_RPM 1800
+#define FW_NOMINAL_SPEED_RPM 2500
 
 /* The following values are given in the xls attached file */
 #define NORM_CURRENT_CONST     0.000629
@@ -151,7 +151,9 @@ before the open loop speed ramp up */
 #define Q_CURRENT_REF_OPENLOOP_MAX NORM_CURRENT(5.0)
 #define Q_CURRENT_REF_OPENLOOP_MIN NORM_CURRENT(3.0)
 #else
-#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.5) 
+#define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(1.8) 
+ #define Q_CURRENT_REF_OPENLOOP_MAX NORM_CURRENT(2.0)
+#define Q_CURRENT_REF_OPENLOOP_MIN NORM_CURRENT(1.5)
 #endif
 
 /* Maximum motor speed converted into electrical speed */
@@ -172,7 +174,11 @@ minimum value accepted */
 
 /* The Speed Control Loop Executes every  SPEEDREFRAMP_COUNT */
 #ifdef SOLO_MOTOR
+#ifndef TORQUE_MODE
     #define SPEEDREFRAMP_COUNT   6
+#else
+#define SPEEDREFRAMP_COUNT   100
+#endif
 #else
 #define SPEEDREFRAMP_COUNT   100
 #endif
@@ -209,10 +215,17 @@ minimum value accepted */
 #define D_CURRCNTR_OUTMAX      0x7FFF
 
 /* Q Control Loop Coefficients */
+#ifndef TORQUE_MODE
 #define Q_CURRCNTR_PTERM       Q15(0.18)
 #define Q_CURRCNTR_ITERM       Q15(0.12)
 #define Q_CURRCNTR_CTERM       Q15(0.999)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
+#else
+#define Q_CURRCNTR_PTERM       Q15(0.18)
+#define Q_CURRCNTR_ITERM       Q15(0.12)
+#define Q_CURRCNTR_CTERM       Q15(0.999)
+#define Q_CURRCNTR_OUTMAX      0x7FFF 
+#endif
 
 /* Velocity Control Loop Coefficients */
 #define SPEEDCNTR_PTERM        Q15(0.3)
