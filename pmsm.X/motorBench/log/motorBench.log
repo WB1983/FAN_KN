@@ -1,0 +1,672 @@
+00:31:55.922 [JavaFX Application Thread] INFO  com.microchip.motorbench.db.configuration.DAOXmlConfiguration
+MSG: Creating Microchip database at: C:\Users\WANG\AppData\Roaming\mplab_ide\dev\v5.40\modules\ext\motorBench\microchip
+00:31:56.065 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpServiceConfiguration
+MSG: Load help configuration XML.
+00:32:00.362 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:00.363 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:00.364 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:00.536 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:00.687 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:32:00.688 [JavaFX Application Thread] ERROR com.microchip.motorbench.db.dao.DaoImpl
+MSG:   Failed to close directory resource for class: ConstantLoad
+java.nio.file.NoSuchFileException: C:\Users\WANG\KN_FAN\FAN_Working\pmsm.X\motorBench\load\constantLoad
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:97) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:102) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsDirectoryStream.<init>(WindowsDirectoryStream.java:86) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsFileSystemProvider.newDirectoryStream(WindowsFileSystemProvider.java:518) ~[?:1.8.0_202]
+	at java.nio.file.Files.newDirectoryStream(Files.java:457) ~[?:1.8.0_202]
+	at com.microchip.motorbench.db.dao.DaoImpl.loadAll(DaoImpl.java:169) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.db.service.RoutableService.loadAll(RoutableService.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadTreeItems(SelectControllerPane.java:415) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadWorkspaceTree(SelectControllerPane.java:154) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.initTree(SelectControllerPane.java:387) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.init(SelectControllerPane.java:99) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.load.LoadPageFxController.init(LoadPageFxController.java:81) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.Page.lambda$autowiredInit$0(Page.java:75) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.Page.autowiredInit(Page.java:73) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.PageLoader.lambda$postConstruct$1(PageLoader.java:131) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.PageLoader.postConstruct(PageLoader.java:121) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:349) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:300) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:133) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:408) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1566) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:322) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerFXController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration.pageManagerController(ManagerConfiguration.java:66) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.CGLIB$pageManagerController$0(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c$$FastClassBySpringCGLIB$$82596a2e.invoke(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:309) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.ConstructorResolver$3.run(ConstructorResolver.java:582) ~[motorBench-core-bin.jar!/:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:579) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1119) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1014) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentScene.createScreensConfigurationContext(MainDevelopmentScene.java:108) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentViewer.lambda$start$0(MainDevelopmentViewer.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$null$5(PlatformImpl.java:295) ~[jfxrt.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$6(PlatformImpl.java:294) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$null$3(WinApplication.java:177) ~[jfxrt.jar:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+00:32:00.699 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:32:00.700 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:32:00.716 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:32:00.719 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:00.720 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:01.037 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:32:01.038 [JavaFX Application Thread] ERROR com.microchip.motorbench.db.dao.DaoImpl
+MSG:   Failed to close directory resource for class: PmsmIpmMotor
+java.nio.file.NoSuchFileException: C:\Users\WANG\KN_FAN\FAN_Working\pmsm.X\motorBench\motor\PMSM
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:97) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:102) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsDirectoryStream.<init>(WindowsDirectoryStream.java:86) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsFileSystemProvider.newDirectoryStream(WindowsFileSystemProvider.java:518) ~[?:1.8.0_202]
+	at java.nio.file.Files.newDirectoryStream(Files.java:457) ~[?:1.8.0_202]
+	at com.microchip.motorbench.db.dao.DaoImpl.loadAll(DaoImpl.java:169) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.db.service.RoutableService.loadAll(RoutableService.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadTreeItems(SelectControllerPane.java:415) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadWorkspaceTree(SelectControllerPane.java:154) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.initTree(SelectControllerPane.java:387) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.init(SelectControllerPane.java:99) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.motor.MotorPageFxController.init(MotorPageFxController.java:106) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.Page.lambda$autowiredInit$0(Page.java:75) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.Page.autowiredInit(Page.java:73) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.PageLoader.lambda$postConstruct$1(PageLoader.java:131) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.PageLoader.postConstruct(PageLoader.java:121) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:349) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:300) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:133) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:408) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1566) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:322) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerFXController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration.pageManagerController(ManagerConfiguration.java:66) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.CGLIB$pageManagerController$0(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c$$FastClassBySpringCGLIB$$82596a2e.invoke(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:309) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.ConstructorResolver$3.run(ConstructorResolver.java:582) ~[motorBench-core-bin.jar!/:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:579) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1119) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1014) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentScene.createScreensConfigurationContext(MainDevelopmentScene.java:108) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentViewer.lambda$start$0(MainDevelopmentViewer.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$null$5(PlatformImpl.java:295) ~[jfxrt.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$6(PlatformImpl.java:294) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$null$3(WinApplication.java:177) ~[jfxrt.jar:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+00:32:01.041 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:32:01.042 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:32:01.089 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:32:01.571 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:32:01.572 [JavaFX Application Thread] ERROR com.microchip.motorbench.db.dao.DaoImpl
+MSG:   Failed to close directory resource for class: HardwareBoard
+java.nio.file.NoSuchFileException: C:\Users\WANG\KN_FAN\FAN_Working\pmsm.X\motorBench\hardware\board
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:97) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:102) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsDirectoryStream.<init>(WindowsDirectoryStream.java:86) ~[?:1.8.0_202]
+	at sun.nio.fs.WindowsFileSystemProvider.newDirectoryStream(WindowsFileSystemProvider.java:518) ~[?:1.8.0_202]
+	at java.nio.file.Files.newDirectoryStream(Files.java:457) ~[?:1.8.0_202]
+	at com.microchip.motorbench.db.dao.DaoImpl.loadAll(DaoImpl.java:169) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.db.service.RoutableService.loadAll(RoutableService.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadTreeItems(SelectControllerPane.java:415) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.loadWorkspaceTree(SelectControllerPane.java:154) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.initTree(SelectControllerPane.java:387) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.select.SelectControllerPane.init(SelectControllerPane.java:99) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.hardware.board.BoardPageFxController.init(BoardPageFxController.java:93) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.Page.lambda$autowiredInit$0(Page.java:75) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.Page.autowiredInit(Page.java:73) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.page.PageLoader.lambda$postConstruct$1(PageLoader.java:131) ~[motorBench-core-bin.jar!/:?]
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.page.PageLoader.postConstruct(PageLoader.java:121) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:349) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:300) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:133) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:408) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1566) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:322) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerFXController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration.pageManagerController(ManagerConfiguration.java:66) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.CGLIB$pageManagerController$0(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c$$FastClassBySpringCGLIB$$82596a2e.invoke(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:309) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.ui.manager.ManagerConfiguration$$EnhancerBySpringCGLIB$$725d419c.pageManagerController(<generated>) ~[motorBench-core-bin.jar!/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_202]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_202]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_202]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.ConstructorResolver$3.run(ConstructorResolver.java:582) ~[motorBench-core-bin.jar!/:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:579) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1119) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1014) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1120) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1044) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:533) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[motorBench-core-bin.jar!/:?]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentScene.createScreensConfigurationContext(MainDevelopmentScene.java:108) ~[motorBench-core-bin.jar!/:?]
+	at com.microchip.motorbench.core.main.MainDevelopmentViewer.lambda$start$0(MainDevelopmentViewer.java:88) ~[motorBench-core-bin.jar!/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$null$5(PlatformImpl.java:295) ~[jfxrt.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_202]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$6(PlatformImpl.java:294) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[jfxrt.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$null$3(WinApplication.java:177) ~[jfxrt.jar:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+00:32:01.575 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:32:01.576 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:32:01.595 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:32:01.784 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Other Parameters Level BASIC HTML: other_parameters/other_parameters.html
+00:32:02.012 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: other_parameters/other_parameters.html
+00:32:02.042 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type FocAlgorithm
+00:32:02.053 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type FocAlgorithm
+00:32:02.084 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PllEstimator
+00:32:02.096 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PllEstimator
+00:32:08.543 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:08.544 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:08.552 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:08.553 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:08.555 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:08.556 [JavaFX Application Thread] TRACE com.microchip.motorbench.core.ui.component.formater.PhaseStringFormatter
+MSG: toString: 1
+00:32:09.279 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:09.280 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:09.292 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:09.293 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:09.294 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:09.301 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:09.302 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:32:09.302 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:32:09.303 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:32:09.305 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:32:09.305 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:32:09.306 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:32:09.307 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:32:09.310 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:32:09.311 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:09.311 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:09.312 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:32:09.312 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:32:09.313 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:32:09.315 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:32:09.557 [JavaFX Application Thread] INFO  com.microchip.motorbench.log.util.LogUtil
+MSG: Set Data Dump: false
+00:32:09.567 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Workspace path C:\Users\WANG\motorBenchWorkspace
+00:32:09.646 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace
+00:32:09.649 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\algorithm
+00:32:09.652 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\algorithm\foc
+00:32:09.653 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\application
+00:32:09.655 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\application\iteration
+00:32:09.656 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\estimator
+00:32:09.658 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\estimator\pll
+00:32:09.659 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\hardware
+00:32:09.660 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\hardware\board
+00:32:09.662 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\hardware\processor
+00:32:09.663 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\load
+00:32:09.664 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\load\constantLoad
+00:32:09.666 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\load\unloaded
+00:32:09.667 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\motor
+00:32:09.669 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: registering C:\Users\WANG\motorBenchWorkspace\motor\PMSM
+00:32:09.698 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.page.PageManagerFXController
+MSG: Loading Application page
+00:32:09.699 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:32:09.798 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: select_panel/select_panel_landing.html
+00:32:09.800 [JavaFX Application Thread] INFO  com.microchip.motorbench.core.settings.level.LevelAccess
+MSG: Get Application Level: Basic
+00:32:09.827 [JavaFX Application Thread] INFO  com.microchip.motorbench.core.settings.level.LevelAccess
+MSG: Set Application Level: Basic
+00:32:09.835 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.page.PageTree
+MSG: Setting the project leaf to FAN
+00:32:09.869 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:32:09.870 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:32:09.871 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : None
+00:34:21.311 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.navigation.NavigationManagerFXController
+MSG: Loading old page Application
+00:34:21.757 [JavaFX Application Thread] INFO  com.microchip.motorbench.core.settings.level.LevelAccess
+MSG: Get Application Level: Basic
+00:34:24.871 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:34:30.701 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:34:32.671 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:34:58.181 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:34:58.229 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: application_parameters/application_parameters.html
+00:35:06.678 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:13.950 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:15.339 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:25.598 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:26.963 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:37.975 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:37.993 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.navigation.NavigationManagerFXController
+MSG: Loading old page Application
+00:35:38.465 [JavaFX Application Thread] INFO  com.microchip.motorbench.core.settings.level.LevelAccess
+MSG: Get Application Level: Basic
+00:35:39.794 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:41.411 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:44.846 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:35:44.848 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: select_panel/select_panel_landing.html
+00:35:54.354 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:35:54.568 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.page.application.ApplicationPageFxController
+MSG: Select Button Pressed
+00:35:54.569 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.page.application.ApplicationPageFxController
+MSG: New database object created
+00:35:54.580 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:35:54.581 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:35:54.609 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:35:54.613 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:35:54.619 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:35:54.622 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:35:54.626 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:35:58.920 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:35:58.921 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: application_parameters/application_parameters.html
+00:36:02.045 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:36:06.821 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:36:09.085 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:36:10.391 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:36:11.668 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Parameters Level BASIC HTML: application_parameters/application_parameters.html
+00:36:20.590 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:36:20.592 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: select_panel/select_panel_landing.html
+00:36:20.805 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.page.application.ApplicationPageFxController
+MSG: Export Button pressed
+00:36:20.806 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:20.807 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:20.808 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Watch Event: sun.nio.fs.AbstractWatchKey$Event@6615d40a
+00:36:20.809 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Watch Kind: ENTRY_CREATE
+00:36:20.809 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Watch Event Path: New Application.xml
+00:36:20.812 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:36:20.819 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:36:20.819 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Posting evt Path: New Application.xml Kind: ENTRY_CREATE
+00:36:20.820 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:20.823 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:20.824 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:20.830 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:20.830 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:36:20.831 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:36:20.832 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type ConstantLoad
+00:36:20.833 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type ConstantLoad
+00:36:20.834 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:20.837 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:20.837 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:20.840 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:20.840 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:36:20.841 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:36:20.841 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type PmsmIpmMotor
+00:36:20.843 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type PmsmIpmMotor
+00:36:20.844 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:36:20.844 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:36:20.845 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type HardwareBoard
+00:36:20.847 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type HardwareBoard
+00:36:20.848 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:36:20.848 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:36:22.600 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.page.application.ApplicationPageFxController
+MSG: Export Button pressed
+00:36:22.600 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Start: Loading all of class type Application
+00:36:22.602 [JavaFX Application Thread] DEBUG com.microchip.motorbench.db.dao.DaoImpl
+MSG: Finish: Loading all of class type Application
+00:36:25.544 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: select_panel/select_panel_landing.html
+00:36:25.573 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+00:36:28.595 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.page.PageManagerFXController
+MSG: Application validation true
+00:36:28.602 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.page.PageManagerFXController
+MSG: Loading Load page
+00:36:28.602 [JavaFX Application Thread] INFO  com.microchip.motorbench.service.help.HelpService
+MSG: Help page: Select Level BASIC HTML: load_select/load_select.html
+00:36:28.949 [JavaFX Application Thread] DEBUG com.microchip.motorbench.service.help.ui.HelpServicePane
+MSG: Loading page: load_select/load_select.html
+00:36:28.974 [JavaFX Application Thread] INFO  com.microchip.motorbench.core.settings.level.LevelAccess
+MSG: Get Load Level: Basic
+00:36:28.976 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+23:25:46.496 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Stop watch service thread
+23:25:46.497 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.manager.parent.page.PageManagerFXController
+MSG: Clean up: save
+23:25:46.497 [Thread-59] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: Closing the watch service
+23:25:46.616 [Thread-58] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: null
+java.lang.InterruptedException
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2014) ~[?:1.8.0_202]
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2048) ~[?:1.8.0_202]
+	at java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:403) ~[?:1.8.0_202]
+	at com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher.lambda$postConstruct$1(WorkspaceWatcher.java:63) ~[motorBench-core-bin.jar!/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+23:25:46.616 [Thread-58] INFO  com.microchip.motorbench.ui.manager.watcher.WorkspaceWatcher
+MSG: watch UI thread shutdown
+23:25:46.786 [JavaFX Application Thread] INFO  com.microchip.motorbench.ui.ScreensConfiguration
+MSG: motorBench? Development Suite v1.15 - FAN : New Application
+23:25:46.789 [JavaFX Application Thread] INFO  com.microchip.motorbench.log.util.LogUtil
+MSG: Preparing for mB shutdown

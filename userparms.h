@@ -112,7 +112,7 @@ controllers, tuning mode will disable the speed PI controller */
 /* Nominal speed of the motor in RPM */
 #define NOMINAL_SPEED_RPM    1200
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
-#define MAXIMUM_SPEED_RPM    1000
+#define MAXIMUM_SPEED_RPM    1200
 
 #define FW_NOMINAL_SPEED_RPM 1800
 
@@ -138,7 +138,8 @@ controllers, tuning mode will disable the speed PI controller */
  lock time is the time needed for motor's poles alignment 
 before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
-#define LOCK_TIME 10000
+//#define LOCK_TIME 45000
+    #define LOCK_TIME 14000
 /* Open loop speed ramp up end value Value in RPM*/
 #define END_SPEED_RPM 450
 /* Open loop acceleration */
@@ -147,6 +148,8 @@ before the open loop speed ramp up */
 #ifndef SOLO_MOTOR
 /* Open loop q current setup - */
 #define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(4.0)
+#define Q_CURRENT_REF_OPENLOOP_MAX NORM_CURRENT(5.0)
+#define Q_CURRENT_REF_OPENLOOP_MIN NORM_CURRENT(3.0)
 #else
 #define Q_CURRENT_REF_OPENLOOP NORM_CURRENT(2.5) 
 #endif
@@ -158,7 +161,7 @@ before the open loop speed ramp up */
 
 /* End speed converted to fit the startup ramp */
 //#define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*1024
-    #define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*4096
+#define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*16384
 /* End speed of open loop ramp up converted into electrical speed */
 #define ENDSPEED_ELECTR END_SPEED_RPM*NOPOLESPAIRS
 
@@ -234,7 +237,7 @@ minimum value accepted */
 								// Controller will have a linear behavior
 								// instead of ON/OFF. Value from (0.0 to 0.9999)
 
-#define STARTUPRAMP_THETA_OPENLOOP_SCALER       12
+#define STARTUPRAMP_THETA_OPENLOOP_SCALER       14
 
 #define MAX_VOLTAGE_VECTOR                      0.98
 // Vd and Vq vector limitation variables

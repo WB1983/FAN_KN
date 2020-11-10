@@ -57,6 +57,8 @@
 
 #include "diagnostics.h"
 #include "MainAlgorithom.h"
+#include "LockRotor.h"
+#include "LockRotor.h"
 
 /**********************************Variables**********************************/
 volatile UGF_T uGF;
@@ -116,13 +118,6 @@ static uint32_t MAM_ulsystemTick;
 static uint32_t MAM_ulTimeSliceTenMiliSecond;
 static TControlParameter MAM_tControlPara = {BRAKE_INIT_PARA, START_INIT_PARA, SPD_CONTROL_PARA};
 static TControlData   MAM_tControlData = CONTROL_INT_DATA;
-static uint16_t MAM_uiTargetStartupIQ = Q_CURRENT_REF_OPENLOOP;
-static uint32_t MAM_uiAlignUpdateCount = 0;
-static uint8_t MAM_auiRampList[OPL_RAMP_LIST_NR] = {2,3,4,5,6,7,8,10,12,14,16,16};
-static uint32_t MAM_ulInterruptCount = 0;
-static uint8_t MAM_ucRampListID = 0;
-static uint16_t MAM_auiSpeedList[5] = {1200,1100,1000,800,600};
-static uint8_t MAM_ucSpeedListID = 0;
 /****************************function declration***************************/        
 void InitControlParameters(void);
 void DoControl(void);
@@ -131,45 +126,7 @@ void ResetParmeters(void);
 void MeasCurrOffset(int16_t *,int16_t *);
 void MAM_vSlopAlgorithom(uint16_t uiTargetValue, TSlopingData tSlopingData, uint8_t uiDirection);
 void MAM_vLaunchSystemTick(void);
-void MAM_vApplicationInitialization(void);
 /******************************Local function*********************************/
-//application initialization
-void MAM_vApplicationInitialization(void)
-{
-    MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = 0;
-    MAM_uiAlignUpdateCount = 0;
-    
-    MAM_ulInterruptCount = 0;
-    MAM_ucRampListID = 0;
-    
-    MAM_tControlData.uiDescendAscend = DESCENDING;
-    MAM_ucSpeedListID = 0;
-}
-
-//open ramp solution
-void MAM_vOpenLoopRamp(void)
-{
-    if(MAM_ucRampListID >= (OPL_RAMP_LIST_NR -1))
-    {
-        
-    }
-    else
-    {
-        MAM_ulInterruptCount ++;
-    }
-    
-    if(MAM_ulInterruptCount == PWMFREQUENCY_HZ)
-    {
-        MAM_ulInterruptCount = 0;
-        MAM_ucRampListID  ++;
-    }
-    else
-    {
-        
-    }
-    motorStartUpData.startupRamp += MAM_auiRampList[MAM_ucRampListID];
-}
-
 /*Ramp up
  * motor accelate normally
  *
@@ -197,8 +154,7 @@ void MAM_vRampup(void)
             else
             {
                 /* Same as above for speed decrease */
-                //ctrlParm.qVelRef = ctrlParm.qVelRef-ctrlParm.qRefRamp;
-                ctrlParm.qVelRef = ctrlParm.qVelRef-MAM_tControlPara.tBreakPara.uiDecreaseStep;
+                ctrlParm.qVelRef = ctrlParm.qVelRef-ctrlParm.qRefRamp;
             }
             /* If difference less than half of ref ramp, set reference
             directly from the pot */
@@ -215,17 +171,15 @@ void MAM_vRampup(void)
  */
 void MAM_vAlignAlgorithm(void)
 {
-    
+    static uint32_t MAM_uiAlignUpdateCount = 0;
     if(MAM_uiAlignUpdateCount == ALIGN_REF_FACTOR)
     {
         MAM_uiAlignUpdateCount = 0;
-        MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue + MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiStep;
-        //MAM_vSlopAlgorithom(MAM_uiTargetStartupIQ, MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop, ASCENDING);
+        MAM_vSlopAlgorithom(Q_CURRENT_REF_OPENLOOP, MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop, ASCENDING);
         if( MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue > Q_CURRENT_REF_OPENLOOP)
         {
             MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = Q_CURRENT_REF_OPENLOOP;
         }
-
     }
     else
     {
@@ -260,19 +214,19 @@ void MAM_vSlopAlgorithom(uint16_t uiTargetValue, TSlopingData tSlopingData, uint
         {
             if(uiDirection == ASCENDING)//ascending
             {
-                if(tSlopingData.uiOutputValue > uiTargetValue )
+                if(tSlopingData.uiOutputValue > (uiTargetValue -tSlopingData.uiStep))
                 {
                 	tSlopingData.uiOutputValue = uiTargetValue;
                 }
                 else
                 {
-                   tSlopingData.uiOutputValue = tSlopingData.uiOutputValue + tSlopingData.uiStep;
+                    tSlopingData.uiOutputValue = tSlopingData.uiOutputValue + tSlopingData.uiStep;
                 }
 
             }
             if(uiDirection == DESCENDING)
             {
-                if(tSlopingData.uiOutputValue < uiTargetValue)
+                if(tSlopingData.uiOutputValue < (uiTargetValue + tSlopingData.uiStep))
                 {
                 	tSlopingData.uiOutputValue = uiTargetValue;
                 }
@@ -451,8 +405,8 @@ void DoControl( void )
             MAM_vInitializeVariables();
         }
         /* Speed reference */
-        MAM_vAlignAlgorithm();
-        //MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = Q_CURRENT_REF_OPENLOOP;
+        //MAM_vAlignAlgorithm();
+        MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue = Q_CURRENT_REF_OPENLOOP;
         ctrlParm.qVelRef = MAM_tControlPara.tStartPara.tAlignSlopParameter.tAlignSlop.uiOutputValue;
         //ctrlParm.qVelRef = Q_CURRENT_REF_OPENLOOP;
         /* q current reference is equal to the velocity reference 
@@ -591,7 +545,7 @@ void DoControl( void )
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
     ucCount ++;
-    //MAM_vLaunchSystemTick();
+    MAM_vLaunchSystemTick();
     if ( uGF.bits.RunMotor )
     {
         ucCount2 ++;
@@ -706,8 +660,7 @@ void CalculateParkAngle(void)
         /* Then ramp up till the end speed */
         else if (motorStartUpData.startupRamp < END_SPEED)
         {
-            MAM_vOpenLoopRamp();
-            //motorStartUpData.startupRamp += OPENLOOP_RAMPSPEED_INCREASERATE;
+            motorStartUpData.startupRamp += OPENLOOP_RAMPSPEED_INCREASERATE;
         }
         /* Switch to closed loop */
         else 
@@ -899,12 +852,10 @@ void MAM_vMotorControl(void)
 {
     if (IsPressed_Button1() == 1)
     {
-        
         if (uGF.bits.RunMotor == 1)
         {
             //ResetParmeters();
             //trans_counter = 0;
-            MAM_vApplicationInitialization();
             MAM_tControlData.uiSystemState = SYS_BRAKE;
         }
         else
@@ -922,7 +873,7 @@ void MAM_vMotorControl(void)
 /****speed adjustment interface********************************/
 void MAM_vMotorSpeedAdjustment(void)
 {
-	/*if(IsPressed_Button2() == 1)
+	if(IsPressed_Button2() == 1)
 	{
 		if(MAM_tControlData.uiDescendAscend == DESCENDING)
 		{
@@ -944,48 +895,7 @@ void MAM_vMotorSpeedAdjustment(void)
 				   MAM_tControlData.uiDescendAscend = DESCENDING;
 			   }
 		}
-	}*/
-    if(MAM_tControlData.uiSystemState == SYS_RUN)
-    {
-        if(IsPressed_Button2() == 1)
-        {
-            if(MAM_tControlData.uiDescendAscend == DESCENDING)
-            {
-                if(MAM_ucSpeedListID == 4)
-                {
-                    MAM_tControlData.uiDescendAscend = ASCENDING;
-                }
-                else
-                {            
-                    MAM_ucSpeedListID = MAM_ucSpeedListID + 1;
-                    MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
-                }
-                //for safety
-                if (MAM_tControlData.uiTargetSpeed < MAM_tControlPara.tSpeedControlParameter.uiMinSpeed)
-                   {
-                       MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMinSpeed;
-
-                   }
-            }
-            else
-            {
-                if(MAM_ucSpeedListID == 0)
-                {
-                    MAM_tControlData.uiDescendAscend = DESCENDING;
-                }
-                else
-                {
-                    MAM_ucSpeedListID = MAM_ucSpeedListID - 1;
-                    MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
-                }
-
-                if (MAM_tControlData.uiTargetSpeed > MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed)
-                   {
-                       MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed;
-                   }
-            }
-        }
-    }
+	}
 }
 
 //get backEMF

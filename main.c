@@ -5,6 +5,7 @@
 
 #include "hal/board_service.h"
 #include "MainAlgorithom.h"
+#include  "MMI.h"
 
 int main ( void )
 {
@@ -14,6 +15,8 @@ int main ( void )
     
     //another initialization
     MAM_vInitialization2Once();
+    
+    MAM_vApplicationInitialization();
             
     while(1)
     {
@@ -24,6 +27,11 @@ int main ( void )
 
         //vButtonTest();
         MAM_vMotorControl();
+        
+        MAM_vMotorSpeedAdjustment();
+        //vButtonTest();
+        
+        
 
     }//inner while loop
 

@@ -87,6 +87,7 @@ extern void BoardServiceInit(void);
 extern void BoardServiceStepIsr(void);
 extern void BoardService(void);
 extern bool IsPressed_Button1(void);
+extern bool IsPressed_Button2(void);
 
 extern void HAL_MC1PWMDisableOutputs(void);
 extern void HAL_MC1PWMEnableOutputs(void);

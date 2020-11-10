@@ -37,6 +37,7 @@
 #include "board_service.h"
 
 BUTTON_T buttonStartStop;
+BUTTON_T buttonSpeedadjust;
 uint16_t boardServiceISRCounter = 0;
 
 void BoardServiceInit(void);
@@ -63,6 +64,19 @@ bool IsPressed_Button1(void)
     }
 }
 
+bool IsPressed_Button2(void)
+{
+    if (buttonSpeedadjust.status)
+    {
+    	buttonSpeedadjust.status = false;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void BoardServiceStepIsr(void)
 {
     if (boardServiceISRCounter <  BOARD_SERVICE_TICK_COUNT)
@@ -76,9 +90,11 @@ void BoardService(void)
     {
         /* Button scanning loop for Button 1 to start Motor A */
         ButtonScan(&buttonStartStop,BUTTON_START_STOP);
+        ButtonScan(&buttonSpeedadjust,BUTTON_SPEED_ADJ);
         boardServiceISRCounter = 0;
     }
 }
+
 void BoardServiceInit(void)
 {
     ButtonGroupInitialize();
@@ -113,7 +129,12 @@ void ButtonGroupInitialize(void)
 {
     buttonStartStop.state = BUTTON_NOT_PRESSED;
     buttonStartStop.debounceCount = 0;
-    buttonStartStop.state = false;	  
+    buttonStartStop.state = false;
+
+    buttonSpeedadjust.state = BUTTON_NOT_PRESSED;
+	buttonSpeedadjust.debounceCount = 0;
+    buttonSpeedadjust.state = false;
+
 }
 /* Function:
     InitPeripherals()
