@@ -37,9 +37,6 @@
 #include "board_service.h"
 
 BUTTON_T buttonStartStop;
-#ifdef MCLV2
-    BUTTON_T buttonSpeedHalfDouble;
-#endif
 uint16_t boardServiceISRCounter = 0;
 
 void BoardServiceInit(void);
@@ -49,9 +46,6 @@ void HAL_MC1PWMEnableOutputs(void);
 void HAL_MC1PWMDisableOutputs(void);
 
 bool IsPressed_Button1(void);
-#ifdef MCLV2
-bool IsPressed_Button2(void);
-#endif
 
 static void ButtonGroupInitialize(void);
 static void ButtonScan(BUTTON_T * ,bool);
@@ -68,20 +62,7 @@ bool IsPressed_Button1(void)
         return false;
     }
 }
-#ifdef MCLV2
-bool IsPressed_Button2(void)
-{
-    if (buttonSpeedHalfDouble.status)
-    {
-        buttonSpeedHalfDouble.status = false;
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-#endif
+
 void BoardServiceStepIsr(void)
 {
     if (boardServiceISRCounter <  BOARD_SERVICE_TICK_COUNT)
@@ -95,11 +76,6 @@ void BoardService(void)
     {
         /* Button scanning loop for Button 1 to start Motor A */
         ButtonScan(&buttonStartStop,BUTTON_START_STOP);
-#ifdef MCLV2
-        /* Button scanning loop for SW2 to enter into filed
-            weakening mode */
-//        ButtonScan(&buttonSpeedHalfDouble,BUTTON_SPEED_HALF_DOUBLE);
-#endif
         boardServiceISRCounter = 0;
     }
 }

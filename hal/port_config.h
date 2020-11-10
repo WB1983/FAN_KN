@@ -68,7 +68,7 @@
 // *****************************************************************************
 // Digital I/O definitions
 // Push button Switches
-#ifdef MCLV2
+
 
 #define PWM_INPUT1                  PORTGbits.RG7
 
@@ -78,17 +78,7 @@
 
 #define BUTTON_START_STOP           PWM_INPUT1
         
-#endif
-
-#ifdef MCHV2_MCHV3
-// PUSH BUTTON: PIM #68
-#define PUSHBUTTON PORTBbits.RB8   
-
-// PUSH BUTTON : PIM #68 - Used as START/STOP button of Motor
-#define BUTTON_START_STOP        PUSHBUTTON 
-#endif
-
-#define EXT_WD                    LATDbits.LATD5
+#define EXT_WD_FEED               LATDbits.LATD5
 #define INRUSH_RELAY              LATGbits.LATG8
 
 // *****************************************************************************
