@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../diagnostics/diagnostics_x2cscope.c ../hal/uart1.c ../hal/board_service.c ../hal/clock.c ../hal/device_config.c ../hal/port_config.c ../hal/adc.c ../hal/pwm.c ../pmsm.c ../meascurr.s ../readadc0.s ../q15sqrt.s ../atan2CORDIC.s ../Fdweak.c ../smcpos.c
+SOURCEFILES_QUOTED_IF_SPACED=../diagnostics/diagnostics_x2cscope.c ../hal/uart1.c ../hal/board_service.c ../hal/clock.c ../hal/device_config.c ../hal/port_config.c ../hal/adc.c ../hal/pwm.c ../meascurr.s ../readadc0.s ../q15sqrt.s ../atan2CORDIC.s ../smcpos.c C:/Users/WANG/KN_FAN/FAN_KN/MMI.c C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c C:/Users/WANG/KN_FAN/FAN_KN/fdweak.c C:/Users/WANG/KN_FAN/FAN_KN/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o ${OBJECTDIR}/_ext/1360926148/uart1.o ${OBJECTDIR}/_ext/1360926148/board_service.o ${OBJECTDIR}/_ext/1360926148/clock.o ${OBJECTDIR}/_ext/1360926148/device_config.o ${OBJECTDIR}/_ext/1360926148/port_config.o ${OBJECTDIR}/_ext/1360926148/adc.o ${OBJECTDIR}/_ext/1360926148/pwm.o ${OBJECTDIR}/_ext/1472/pmsm.o ${OBJECTDIR}/_ext/1472/meascurr.o ${OBJECTDIR}/_ext/1472/readadc0.o ${OBJECTDIR}/_ext/1472/q15sqrt.o ${OBJECTDIR}/_ext/1472/atan2CORDIC.o ${OBJECTDIR}/_ext/1472/Fdweak.o ${OBJECTDIR}/_ext/1472/smcpos.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o.d ${OBJECTDIR}/_ext/1360926148/uart1.o.d ${OBJECTDIR}/_ext/1360926148/board_service.o.d ${OBJECTDIR}/_ext/1360926148/clock.o.d ${OBJECTDIR}/_ext/1360926148/device_config.o.d ${OBJECTDIR}/_ext/1360926148/port_config.o.d ${OBJECTDIR}/_ext/1360926148/adc.o.d ${OBJECTDIR}/_ext/1360926148/pwm.o.d ${OBJECTDIR}/_ext/1472/pmsm.o.d ${OBJECTDIR}/_ext/1472/meascurr.o.d ${OBJECTDIR}/_ext/1472/readadc0.o.d ${OBJECTDIR}/_ext/1472/q15sqrt.o.d ${OBJECTDIR}/_ext/1472/atan2CORDIC.o.d ${OBJECTDIR}/_ext/1472/Fdweak.o.d ${OBJECTDIR}/_ext/1472/smcpos.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o ${OBJECTDIR}/_ext/1360926148/uart1.o ${OBJECTDIR}/_ext/1360926148/board_service.o ${OBJECTDIR}/_ext/1360926148/clock.o ${OBJECTDIR}/_ext/1360926148/device_config.o ${OBJECTDIR}/_ext/1360926148/port_config.o ${OBJECTDIR}/_ext/1360926148/adc.o ${OBJECTDIR}/_ext/1360926148/pwm.o ${OBJECTDIR}/_ext/1472/meascurr.o ${OBJECTDIR}/_ext/1472/readadc0.o ${OBJECTDIR}/_ext/1472/q15sqrt.o ${OBJECTDIR}/_ext/1472/atan2CORDIC.o ${OBJECTDIR}/_ext/1472/smcpos.o ${OBJECTDIR}/_ext/1778585070/MMI.o ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o ${OBJECTDIR}/_ext/1778585070/fdweak.o ${OBJECTDIR}/_ext/1778585070/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o.d ${OBJECTDIR}/_ext/1360926148/uart1.o.d ${OBJECTDIR}/_ext/1360926148/board_service.o.d ${OBJECTDIR}/_ext/1360926148/clock.o.d ${OBJECTDIR}/_ext/1360926148/device_config.o.d ${OBJECTDIR}/_ext/1360926148/port_config.o.d ${OBJECTDIR}/_ext/1360926148/adc.o.d ${OBJECTDIR}/_ext/1360926148/pwm.o.d ${OBJECTDIR}/_ext/1472/meascurr.o.d ${OBJECTDIR}/_ext/1472/readadc0.o.d ${OBJECTDIR}/_ext/1472/q15sqrt.o.d ${OBJECTDIR}/_ext/1472/atan2CORDIC.o.d ${OBJECTDIR}/_ext/1472/smcpos.o.d ${OBJECTDIR}/_ext/1778585070/MMI.o.d ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d ${OBJECTDIR}/_ext/1778585070/fdweak.o.d ${OBJECTDIR}/_ext/1778585070/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o ${OBJECTDIR}/_ext/1360926148/uart1.o ${OBJECTDIR}/_ext/1360926148/board_service.o ${OBJECTDIR}/_ext/1360926148/clock.o ${OBJECTDIR}/_ext/1360926148/device_config.o ${OBJECTDIR}/_ext/1360926148/port_config.o ${OBJECTDIR}/_ext/1360926148/adc.o ${OBJECTDIR}/_ext/1360926148/pwm.o ${OBJECTDIR}/_ext/1472/pmsm.o ${OBJECTDIR}/_ext/1472/meascurr.o ${OBJECTDIR}/_ext/1472/readadc0.o ${OBJECTDIR}/_ext/1472/q15sqrt.o ${OBJECTDIR}/_ext/1472/atan2CORDIC.o ${OBJECTDIR}/_ext/1472/Fdweak.o ${OBJECTDIR}/_ext/1472/smcpos.o
+OBJECTFILES=${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o ${OBJECTDIR}/_ext/1360926148/uart1.o ${OBJECTDIR}/_ext/1360926148/board_service.o ${OBJECTDIR}/_ext/1360926148/clock.o ${OBJECTDIR}/_ext/1360926148/device_config.o ${OBJECTDIR}/_ext/1360926148/port_config.o ${OBJECTDIR}/_ext/1360926148/adc.o ${OBJECTDIR}/_ext/1360926148/pwm.o ${OBJECTDIR}/_ext/1472/meascurr.o ${OBJECTDIR}/_ext/1472/readadc0.o ${OBJECTDIR}/_ext/1472/q15sqrt.o ${OBJECTDIR}/_ext/1472/atan2CORDIC.o ${OBJECTDIR}/_ext/1472/smcpos.o ${OBJECTDIR}/_ext/1778585070/MMI.o ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o ${OBJECTDIR}/_ext/1778585070/fdweak.o ${OBJECTDIR}/_ext/1778585070/main.o
 
 # Source Files
-SOURCEFILES=../diagnostics/diagnostics_x2cscope.c ../hal/uart1.c ../hal/board_service.c ../hal/clock.c ../hal/device_config.c ../hal/port_config.c ../hal/adc.c ../hal/pwm.c ../pmsm.c ../meascurr.s ../readadc0.s ../q15sqrt.s ../atan2CORDIC.s ../Fdweak.c ../smcpos.c
+SOURCEFILES=../diagnostics/diagnostics_x2cscope.c ../hal/uart1.c ../hal/board_service.c ../hal/clock.c ../hal/device_config.c ../hal/port_config.c ../hal/adc.c ../hal/pwm.c ../meascurr.s ../readadc0.s ../q15sqrt.s ../atan2CORDIC.s ../smcpos.c C:/Users/WANG/KN_FAN/FAN_KN/MMI.c C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c C:/Users/WANG/KN_FAN/FAN_KN/fdweak.c C:/Users/WANG/KN_FAN/FAN_KN/main.c
 
 
 
@@ -151,26 +151,40 @@ ${OBJECTDIR}/_ext/1360926148/pwm.o: ../hal/pwm.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../hal/pwm.c  -o ${OBJECTDIR}/_ext/1360926148/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1360926148/pwm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360926148/pwm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1472/pmsm.o: ../pmsm.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/pmsm.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/pmsm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../pmsm.c  -o ${OBJECTDIR}/_ext/1472/pmsm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/pmsm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/pmsm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1472/Fdweak.o: ../Fdweak.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/Fdweak.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/Fdweak.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Fdweak.c  -o ${OBJECTDIR}/_ext/1472/Fdweak.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Fdweak.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Fdweak.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1472/smcpos.o: ../smcpos.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/smcpos.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/smcpos.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../smcpos.c  -o ${OBJECTDIR}/_ext/1472/smcpos.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/smcpos.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/smcpos.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/MMI.o: C\:/Users/WANG/KN_FAN/FAN_KN/MMI.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MMI.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MMI.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/MMI.c  -o ${OBJECTDIR}/_ext/1778585070/MMI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/MMI.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/MMI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o: C\:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c  -o ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/fdweak.o: C\:/Users/WANG/KN_FAN/FAN_KN/fdweak.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/fdweak.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/fdweak.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/fdweak.c  -o ${OBJECTDIR}/_ext/1778585070/fdweak.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/fdweak.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/fdweak.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/main.o: C\:/Users/WANG/KN_FAN/FAN_KN/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/main.c  -o ${OBJECTDIR}/_ext/1778585070/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -mno-eds-warn  -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/_ext/1360962595/diagnostics_x2cscope.o: ../diagnostics/diagnostics_x2cscope.c  nbproject/Makefile-${CND_CONF}.mk
@@ -229,26 +243,40 @@ ${OBJECTDIR}/_ext/1360926148/pwm.o: ../hal/pwm.c  nbproject/Makefile-${CND_CONF}
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../hal/pwm.c  -o ${OBJECTDIR}/_ext/1360926148/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1360926148/pwm.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360926148/pwm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/_ext/1472/pmsm.o: ../pmsm.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/pmsm.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/pmsm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../pmsm.c  -o ${OBJECTDIR}/_ext/1472/pmsm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/pmsm.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/pmsm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1472/Fdweak.o: ../Fdweak.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/Fdweak.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/Fdweak.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Fdweak.c  -o ${OBJECTDIR}/_ext/1472/Fdweak.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Fdweak.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Fdweak.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/_ext/1472/smcpos.o: ../smcpos.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/smcpos.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/smcpos.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../smcpos.c  -o ${OBJECTDIR}/_ext/1472/smcpos.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/smcpos.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/smcpos.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/MMI.o: C\:/Users/WANG/KN_FAN/FAN_KN/MMI.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MMI.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MMI.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/MMI.c  -o ${OBJECTDIR}/_ext/1778585070/MMI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/MMI.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/MMI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o: C\:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c  -o ${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/MainAlgorithom.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/fdweak.o: C\:/Users/WANG/KN_FAN/FAN_KN/fdweak.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/fdweak.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/fdweak.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/fdweak.c  -o ${OBJECTDIR}/_ext/1778585070/fdweak.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/fdweak.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/fdweak.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1778585070/main.o: C\:/Users/WANG/KN_FAN/FAN_KN/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1778585070" 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1778585070/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  C:/Users/WANG/KN_FAN/FAN_KN/main.c  -o ${OBJECTDIR}/_ext/1778585070/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1778585070/main.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_MCLV2=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wall  -O0 -I".." -I"../lib" -I"../diagnostics" -DMCLV2 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1778585070/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

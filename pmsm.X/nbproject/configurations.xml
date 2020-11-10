@@ -40,6 +40,9 @@
       <itemPath>../motor_control_noinline.h</itemPath>
       <itemPath>../Fdweak.h</itemPath>
       <itemPath>../smcpos.h</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/MMI.h</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.h</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/fdweak.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -60,13 +63,15 @@
         <itemPath>../hal/adc.c</itemPath>
         <itemPath>../hal/pwm.c</itemPath>
       </logicalFolder>
-      <itemPath>../pmsm.c</itemPath>
       <itemPath>../meascurr.s</itemPath>
       <itemPath>../readadc0.s</itemPath>
       <itemPath>../q15sqrt.s</itemPath>
       <itemPath>../atan2CORDIC.s</itemPath>
-      <itemPath>../Fdweak.c</itemPath>
       <itemPath>../smcpos.c</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/MMI.c</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/fdweak.c</itemPath>
+      <itemPath>C:/Users/WANG/KN_FAN/FAN_KN/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

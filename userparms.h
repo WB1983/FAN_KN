@@ -110,7 +110,7 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    1400
+#define NOMINAL_SPEED_RPM    1200
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
 #define MAXIMUM_SPEED_RPM    1000
 
