@@ -151,12 +151,12 @@ void MAIN_vWDSWAP(void)
     if (WDSwapFlag == 0)
     {
         WDSwapFlag = 1;
-        EXT_WD = 0;
+        EXT_WD_FEED = 0;
     }
     else
     {
         WDSwapFlag = 0;
-        EXT_WD = 1;
+        EXT_WD_FEED = 1;
     }
 }
 // *****************************************************************************
