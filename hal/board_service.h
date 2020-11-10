@@ -88,10 +88,6 @@ extern void BoardServiceStepIsr(void);
 extern void BoardService(void);
 extern bool IsPressed_Button1(void);
 
-#ifdef MCLV2
-extern bool IsPressed_Button2(void);
-#endif
-
 extern void HAL_MC1PWMDisableOutputs(void);
 extern void HAL_MC1PWMEnableOutputs(void);
 extern void Init_Peripherals(void);

@@ -1,0 +1,23 @@
+build/MCLV2/production/_ext/1472/MainAlgorithom.o:  \
+../MainAlgorithom.c  \
+ ../motor_control_noinline.h  \
+../lib/motor_control/motor_control_mapping.h  \
+ ../lib/motor_control/motor_control_declarations.h  \
+ ../lib/motor_control/motor_control_types.h  \
+../general.h  \
+../userparms.h  \
+ ../hal/pim_select.h  \
+../control.h  \
+../smcpos.h  \
+../fdweak.h  \
+../readadc.h  \
+ ../meascurr.h  \
+../hal/board_service.h  \
+../hal/clock.h  \
+../hal/pwm.h  \
+ ../hal/adc.h  \
+../hal/pim_select.h  \
+../hal/port_config.h  \
+../userparms.h  \
+ ../diagnostics/diagnostics.h  \
+../MainAlgorithom.h 

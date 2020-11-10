@@ -260,17 +260,12 @@ void MapGPIOHWFunction(void)
     TRISDbits.TRISD6 = 1;           // RPI72/RD8
 
     // Push button Switches
-#ifdef MCLV2
+
     // PWM control1 : 
     TRISGbits.TRISG7 = 1;            // AN30/CVREF+/RPI52/RC4
     // PWM control2 : 
     TRISGbits.TRISG6 = 1;            // AN19/RP118/RG6
-#endif
 
-#ifdef MCHV2_MCHV3
-    // Push Button : PIM #68
-    TRISBbits.TRISB8 = 1;   // PIN48: RB8
-#endif
 /*disable it
     // UART - for RTDM/DMCI Communication
     // UART_RX : PIM #49 (Input)

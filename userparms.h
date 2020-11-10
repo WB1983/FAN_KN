@@ -102,7 +102,7 @@ controllers, tuning mode will disable the speed PI controller */
 /****************************** Motor Parameters ******************************/
 /********************  support xls file definitions begin *********************/
 /* The following values are given in the xls attached file */
-#ifdef MCLV2
+    
 // Values used to test Hurst Motor "NT Dynamo DMB0224C10002" at 24VDC input.
 // Motor datasheet at www.hurstmfg.com
 /* Motor's number of pole pairs */
@@ -110,7 +110,7 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    400
+#define NOMINAL_SPEED_RPM    1200
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
 #define MAXIMUM_SPEED_RPM    1000
 
@@ -126,43 +126,7 @@ controllers, tuning mode will disable the speed PI controller */
 
 #define NORM_RS  370
 #define NORM_RS_SCALINGFACTOR 1
-#endif
 
-#ifdef MCHV2_MCHV3    
-/*Update the following motor tuning parameters while using MCHV2 build configuration*/
-
-/* Motor's number of pole pairs */
-#define NOPOLESPAIRS 5
-/* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 500
-/* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    3000 
-/* Maximum speed of the motor in RPM - given by the motor's manufacturer */
-#define MAXIMUM_SPEED_RPM    5000
-
-#define FW_NOMINAL_SPEED_RPM 3000
-
-#ifdef INTERNAL_OPAMP_PIM
-/* The following values are given in the xls attached file */
-#define NORM_CURRENT_CONST     0.000336
-/* normalized ls/dt value */
-#define NORM_LSDTBASE 560
-#define NORM_LSDTBASE_SCALINGFACTOR 8    
-/* normalized Rs value */
-#define NORM_RS  1973
-#define NORM_RS_SCALINGFACTOR 1
-#else
-/* The following values are given in the xls attached file */
-#define NORM_CURRENT_CONST     0.000488
-/* normalized ls/dt value */
-#define NORM_LSDTBASE 815
-#define NORM_LSDTBASE_SCALINGFACTOR 8
-/* normalized Rs value */
-#define NORM_RS  2870
-#define NORM_RS_SCALINGFACTOR 1
-#endif
-
-#endif
 /**********************  support xls file definitions end *********************/
 
 /* current transformation macro, used below */
@@ -176,9 +140,9 @@ before the open loop speed ramp up */
 /* This number is: 20,000 is 1 second. */
 #define LOCK_TIME 10000
 /* Open loop speed ramp up end value Value in RPM*/
-#define END_SPEED_RPM 300
+#define END_SPEED_RPM 450
 /* Open loop acceleration */
-#define OPENLOOP_RAMPSPEED_INCREASERATE 1//change to 1 from 10
+#define OPENLOOP_RAMPSPEED_INCREASERATE 2//change to 1 from 10
     
 #ifndef SOLO_MOTOR
 /* Open loop q current setup - */
@@ -193,7 +157,8 @@ before the open loop speed ramp up */
 #define NOMINALSPEED_ELECTR NOMINAL_SPEED_RPM*NOPOLESPAIRS
 
 /* End speed converted to fit the startup ramp */
-#define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*1024
+//#define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*1024
+    #define END_SPEED (END_SPEED_RPM * NOPOLESPAIRS * LOOPTIME_SEC * 65536 / 60.0)*4096
 /* End speed of open loop ramp up converted into electrical speed */
 #define ENDSPEED_ELECTR END_SPEED_RPM*NOPOLESPAIRS
 
@@ -204,78 +169,56 @@ minimum value accepted */
 
 /* The Speed Control Loop Executes every  SPEEDREFRAMP_COUNT */
 #ifdef SOLO_MOTOR
-    #define SPEEDREFRAMP_COUNT   3
+    #define SPEEDREFRAMP_COUNT   6
 #else
-#define SPEEDREFRAMP_COUNT   90
+#define SPEEDREFRAMP_COUNT   100
 #endif
 
 /* PI controllers tuning values - */
-#ifdef MCLV2
 
 #ifndef SOLO_MOTOR
 /* D Control Loop Coefficients */
-#define D_CURRCNTR_PTERM       Q15(0.2)
+//#define D_CURRCNTR_PTERM       Q15(0.2)
+    #define D_CURRCNTR_PTERM       Q15(0.2)
 #define D_CURRCNTR_ITERM       Q15(0.15)
 #define D_CURRCNTR_CTERM       Q15(0.999)
 #define D_CURRCNTR_OUTMAX      0x7FFF
 
 /* Q Control Loop Coefficients */
-#define Q_CURRCNTR_PTERM       Q15(0.2)
+//#define Q_CURRCNTR_PTERM       Q15(0.2)
+    #define Q_CURRCNTR_PTERM       Q15(0.2)
 #define Q_CURRCNTR_ITERM       Q15(0.18)
 #define Q_CURRCNTR_CTERM       Q15(0.999)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
 
 /* Velocity Control Loop Coefficients */
-#define SPEEDCNTR_PTERM        Q15(0.18)
-#define SPEEDCNTR_ITERM        Q15(0.00012)
+//#define SPEEDCNTR_PTERM        Q15(0.18)
+    #define SPEEDCNTR_PTERM        Q15(0.16)
+#define SPEEDCNTR_ITERM        Q15(0.00010)
 #define SPEEDCNTR_CTERM        Q15(0.999)
-#define SPEEDCNTR_OUTMAX       0x5000
+#define SPEEDCNTR_OUTMAX       0x7000
 
 #else
    /* D Control Loop Coefficients */
-#define D_CURRCNTR_PTERM       Q15(0.2)
+#define D_CURRCNTR_PTERM       Q15(0.18)
 #define D_CURRCNTR_ITERM       Q15(0.12)
 #define D_CURRCNTR_CTERM       Q15(0.999)
 #define D_CURRCNTR_OUTMAX      0x7FFF
 
 /* Q Control Loop Coefficients */
-#define Q_CURRCNTR_PTERM       Q15(0.2)
+#define Q_CURRCNTR_PTERM       Q15(0.18)
 #define Q_CURRCNTR_ITERM       Q15(0.12)
 #define Q_CURRCNTR_CTERM       Q15(0.999)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
 
 /* Velocity Control Loop Coefficients */
 #define SPEEDCNTR_PTERM        Q15(0.3)
-#define SPEEDCNTR_ITERM        Q15(0.0002)
+#define SPEEDCNTR_ITERM        Q15(0.00015)
 #define SPEEDCNTR_CTERM        Q15(0.999)
 #define SPEEDCNTR_OUTMAX       0x5000
     
 #endif
     
-    
-#endif
-
-#ifdef MCHV2_MCHV3
-
-/* D Control Loop Coefficients */
-#define D_CURRCNTR_PTERM       Q15(0.05)
-#define D_CURRCNTR_ITERM       Q15(0.002)
-#define D_CURRCNTR_CTERM       Q15(0.999)
-#define D_CURRCNTR_OUTMAX      0x7FFF
-
-/* Q Control Loop Coefficients */
-#define Q_CURRCNTR_PTERM       Q15(0.05)
-#define Q_CURRCNTR_ITERM       Q15(0.002)
-#define Q_CURRCNTR_CTERM       Q15(0.999)
-#define Q_CURRCNTR_OUTMAX      0x7FFF
-
-/* Velocity Control Loop Coefficients */
-#define SPEEDCNTR_PTERM        Q15(0.005)
-#define SPEEDCNTR_ITERM        Q15(0.0005)
-#define SPEEDCNTR_CTERM        Q15(0.999)
-#define SPEEDCNTR_OUTMAX       0x5000
-
-#endif
 
 //***********************SMC Params*********************************************//
 #define LOOPTIMEINSEC (1.0/PWMFREQUENCY_HZ) // PWM Period = 1.0 / PWMFREQUENCY
@@ -291,7 +234,7 @@ minimum value accepted */
 								// Controller will have a linear behavior
 								// instead of ON/OFF. Value from (0.0 to 0.9999)
 
-#define STARTUPRAMP_THETA_OPENLOOP_SCALER       10
+#define STARTUPRAMP_THETA_OPENLOOP_SCALER       12
 
 #define MAX_VOLTAGE_VECTOR                      0.98
 // Vd and Vq vector limitation variables
@@ -369,6 +312,13 @@ minimum value accepted */
 #endif
 /******************** End of Field Weakening Params ***************************/
 
+/******************************definition for control**************************/
+#ifdef SOLO_MOTOR
+#define OPEN_CLOSE_INI_SPEED_INTEGRATE_SCALER              13    
+#else
+#define OPEN_CLOSE_INI_SPEED_INTEGRATE_SCALER              16
+#endif
+    
 #ifdef __cplusplus
 }
 #endif

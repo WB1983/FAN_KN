@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/MCHV2_MCHV3/production/pmsm.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>32768</length>
+      <used>6142</used>
+      <free>26626</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>263394</length>
+      <used>21273</used>
+      <free>242121</free>
+    </memory>
+  </executable>
+</project>

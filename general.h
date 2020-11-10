@@ -52,7 +52,7 @@ extern "C" {
 					// to Q15 as follows:
 					// .05 * 32768 / 180 = 9.1, approx 9.   
 #else
- #define _0_05DEG 1	// The value for 0.05 degrees is converted
+ #define _0_05DEG 15	// The value for 0.05 degrees is converted
 					// to Q15 as follows:
 					// .05 * 32768 / 180 = 9.1, approx 9.     
 #endif
