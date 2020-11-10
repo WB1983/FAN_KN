@@ -11,7 +11,7 @@ void vButtonTest(void)
 {
     static uint8_t ucSwitchFlag = 0;
 
-    if(IsPressed_Button1())
+    if(IsPressed_Button2())
     {
         if(ucSwitchFlag == 0)
         {

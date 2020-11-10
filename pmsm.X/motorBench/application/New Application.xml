@@ -1,0 +1,30 @@
+<application>
+  <name>New Application</name>
+  <description></description>
+  <notes></notes>
+  <configuration>
+    <name/>
+    <axes>
+      <com.microchip.motorbench.db.model.axis.Axis>
+        <name/>
+        <iterations>
+          <iteration>
+            <name>active</name>
+            <description/>
+            <notes/>
+            <date>2020-10-16 00:35:54</date>
+            <id>0</id>
+            <hardware>
+              <name/>
+            </hardware>
+            <currentLoopRate>0.0</currentLoopRate>
+            <velocityLoopRate>0.0</velocityLoopRate>
+          </iteration>
+        </iterations>
+        <activeIteration reference="../iterations/iteration"/>
+        <selectedFiles/>
+      </com.microchip.motorbench.db.model.axis.Axis>
+    </axes>
+    <activeAxis reference="../axes/com.microchip.motorbench.db.model.axis.Axis"/>
+  </configuration>
+</application>

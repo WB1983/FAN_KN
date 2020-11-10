@@ -77,6 +77,8 @@
 #define WD_Feed                     PORTDbits.RD6
 
 #define BUTTON_START_STOP           PWM_INPUT1
+
+#define BUTTON_SPEED_ADJ            PWM_INPUT2
         
 #define EXT_WD_FEED               LATDbits.LATD5
 #define INRUSH_RELAY              LATGbits.LATG8
