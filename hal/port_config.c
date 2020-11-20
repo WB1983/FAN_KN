@@ -55,6 +55,7 @@
 #include <xc.h>
 #include "port_config.h"
 #include "pim_select.h"
+#include "../userparms.h"
 
 #undef MCBOARD_UART
 // *****************************************************************************
@@ -132,6 +133,41 @@ void SetupGPIOPorts(void)
 
     MapGPIOHWFunction();
 
+
+#ifdef X2C_UART2
+    U2BRG = BRGVAL;             /* set baudrate */
+    U2MODEbits.BRGH = 0;
+    U2MODEbits.PDSEL = 0b00;    /* 8-bit data, no parity */
+    U2MODEbits.STSEL = 0;       /* 1 stop bit */
+    U2MODEbits.UARTEN = 01;     /* enable UART 1 */
+    U2STAbits.UTXEN = 1;        /* enable transmitter */  
+#endif    
+
+	/************** uart and fault ******/
+	__builtin_write_OSCCONL(OSCCON & (~(1<<6))); // clear bit 6 
+
+#ifdef X2C_UART2
+    #ifdef UART_ICSP_SamePin    // UART2 PGEC PGED    
+        TRISBbits.TRISB6 = 1;   // RB6 as input port RX
+        TRISBbits.TRISB5 = 0;   // RB5 as output port TX
+        
+        RPINR19bits.U2RXR = 38; // Make Pin RP38/RB6 mapped as U2RX
+        RPOR1bits.RP37R = 3;    // Make Pin RP37/RB5 mapped as U2TX
+    #else
+        RPINR19bits.U2RXR = 53;		// Make Pin RPI53 U2RX
+        RPOR7bits.RP97R = 3;	    // Make Pin RP97 U2TX
+    #endif
+#endif    
+
+#ifdef PWM1_FAULT_ENABLE        
+//    RPINR12bits.FLT1R = 32;		// Make Pin RP32 FLT I/P
+    RPINR12       = 0;
+    RPINR12bits.FLT1R = 36;// RB4-36 // Select RP36 as input for fault 1
+#endif
+    
+	__builtin_write_OSCCONL(OSCCON | (1<<6)); 	 // Set bit 6 	
+	/****************************************************************/
+    
     return;
 }
 // *****************************************************************************

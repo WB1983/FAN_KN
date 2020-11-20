@@ -18,4 +18,6 @@ build/MCLV2/production/_ext/1472/main.o:  \
  ../control.h  \
 ../smcpos.h  \
 ../LockRotor.h  \
-../MMI.h 
+../MMI.h  \
+ ../X2CScopeCommunication.h  \
+../X2CScope.h 

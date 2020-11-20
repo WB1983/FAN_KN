@@ -57,6 +57,8 @@
 
 #include "diagnostics.h"
 #include "MainAlgorithom.h"
+#include "X2CScopeCommunication.h"
+#include "X2CScope.h"
 
 /**********************************Variables**********************************/
 volatile UGF_T uGF;
@@ -121,7 +123,7 @@ static uint32_t MAM_uiAlignUpdateCount = 0;
 static uint8_t MAM_auiRampList[OPL_RAMP_LIST_NR] = {2,3,4,5,6,7,8,10,12,14,16,16};
 static uint32_t MAM_ulInterruptCount = 0;
 static uint8_t MAM_ucRampListID = 0;
-static uint16_t MAM_auiSpeedList[5] = {1200,1100,1000,800,600};
+static uint16_t MAM_auiSpeedList[5] = {1500,1300,1200,1000,800};
 static uint8_t MAM_ucSpeedListID = 0;
 /****************************function declration***************************/        
 void InitControlParameters(void);
@@ -524,6 +526,11 @@ void DoControl( void )
                                            &piInputOmega.piState,
                                            &piOutputOmega.out);
             ctrlParm.qVqRef = piOutputOmega.out;
+            if(ctrlParm.qVqRef < 0)//Jason Sun 20201119
+            {
+                ctrlParm.qVqRef = 0;
+            }
+            
         #else
             ctrlParm.qVqRef = ctrlParm.qVelRef;
         #endif
@@ -664,9 +671,12 @@ void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 		measCurrOffsetFlag = 1;
     }
 
-    //DiagnosticsStepIsr();
+//    DiagnosticsStepIsr();
     BoardServiceStepIsr();
     MAM_vBrakeMotor();
+    
+    X2CScope_Update();
+    
     /* Clear Interrupt Flag */
     ClearADC1IF();
 }
@@ -860,7 +870,8 @@ void MAM_vInitializationOnce(void)
     /* Initializing Current offsets in structure variable */
     MeasCurrOffset(&measCurrParm.Offseta,&measCurrParm.Offsetb);
 
-    //DiagnosticsInit();
+//    DiagnosticsInit();
+    X2CScope_Init();
     
     //GPIO initialization.
     BoardServiceInit();

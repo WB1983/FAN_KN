@@ -48,7 +48,7 @@ extern "C" {
 
 #undef SOLO_MOTOR_ANGLE
 #ifndef SOLO_MOTOR_ANGLE
- #define _0_05DEG 6	// The value for 0.05 degrees is converted
+ #define _0_05DEG 9	// The value for 0.05 degrees is converted
 					// to Q15 as follows:
 					// .05 * 32768 / 180 = 9.1, approx 9.   
 #else

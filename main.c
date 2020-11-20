@@ -6,6 +6,8 @@
 #include "hal/board_service.h"
 #include "MainAlgorithom.h"
 #include  "MMI.h"
+#include "X2CScopeCommunication.h"
+#include "X2CScope.h"
 
 int main ( void )
 {
@@ -22,7 +24,7 @@ int main ( void )
     {
         MAM_vFeedExternalWatchdog();
 
-        //DiagnosticsStepMain();
+//        DiagnosticsStepMain();
         BoardService();
 
         //vButtonTest();
@@ -31,7 +33,7 @@ int main ( void )
         MAM_vMotorSpeedAdjustment();
         //vButtonTest();
         
-        
+        X2CScope_Communicate();
 
     }//inner while loop
 

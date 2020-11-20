@@ -21,4 +21,6 @@ build/MCLV2/production/_ext/1472/MainAlgorithom.o:  \
 ../userparms.h  \
  ../diagnostics/diagnostics.h  \
 ../MainAlgorithom.h  \
-../LockRotor.h 
+../LockRotor.h  \
+ ../X2CScopeCommunication.h  \
+../X2CScope.h 

@@ -56,6 +56,15 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
         
+    
+#define X2C_UART2
+#define UART_ICSP_SamePin
+// X2C UART 
+#define FCY_HZ        70000000            // Instruction cycle frequency (Hz)
+#define BAUDRATE        115200                  /* baudrate for serial interface */
+#define BRGVAL          (((FCY_HZ/BAUDRATE)/16)-1) /* for BRGH = 0 */
+// X2C UART 
+        
 /*************** PWM and Control Timing Parameters ****************************/
 /* Specify PWM Frequency in Hertz */
 #define PWMFREQUENCY_HZ         20000
@@ -110,9 +119,9 @@ controllers, tuning mode will disable the speed PI controller */
 /* Open loop speed ramp up end value Value in RPM*/
 //#define END_SPEED_RPM 500
 /* Nominal speed of the motor in RPM */
-#define NOMINAL_SPEED_RPM    1200
+#define NOMINAL_SPEED_RPM    1500
 /* Maximum speed of the motor in RPM - given by the motor's manufacturer */
-#define MAXIMUM_SPEED_RPM    1200
+#define MAXIMUM_SPEED_RPM    1500
 
 #define FW_NOMINAL_SPEED_RPM 1800
 
@@ -189,17 +198,31 @@ minimum value accepted */
 
 /* Q Control Loop Coefficients */
 //#define Q_CURRCNTR_PTERM       Q15(0.2)
-    #define Q_CURRCNTR_PTERM       Q15(0.2)
-#define Q_CURRCNTR_ITERM       Q15(0.18)
-#define Q_CURRCNTR_CTERM       Q15(0.999)
+//Jason's parameter, 
+#define Q_CURRCNTR_PTERM       Q15(0.01)
+#define Q_CURRCNTR_ITERM       Q15(0.010)
+#define Q_CURRCNTR_CTERM       Q15(0.6)
 #define Q_CURRCNTR_OUTMAX      0x7FFF
-
+    
+//Jack's parameter, it will increase the over flow to a high value
+//#define Q_CURRCNTR_PTERM       Q15(0.06)//current wave OK
+//#define Q_CURRCNTR_ITERM       Q15(0.01)
+//#define Q_CURRCNTR_CTERM       Q15(0.999)
+//#define Q_CURRCNTR_OUTMAX      0x7FFF
+    
 /* Velocity Control Loop Coefficients */
 //#define SPEEDCNTR_PTERM        Q15(0.18)
-    #define SPEEDCNTR_PTERM        Q15(0.16)
-#define SPEEDCNTR_ITERM        Q15(0.00010)
-#define SPEEDCNTR_CTERM        Q15(0.999)
+//Jason's parameter    
+#define SPEEDCNTR_PTERM        Q15(0.10)
+#define SPEEDCNTR_ITERM        Q15(0.0010)
+#define SPEEDCNTR_CTERM        Q15(0.6)
 #define SPEEDCNTR_OUTMAX       0x7000
+
+//Jack's parameter    
+//#define SPEEDCNTR_PTERM        Q15(0.06)
+//#define SPEEDCNTR_ITERM        Q15(0.0006)
+//#define SPEEDCNTR_CTERM        Q15(0.6)
+//#define SPEEDCNTR_OUTMAX       0x7000
 
 #else
    /* D Control Loop Coefficients */
@@ -231,12 +254,14 @@ minimum value accepted */
 #define IRP_PERCALC (uint16_t)(SPEEDLOOPTIME/LOOPTIMEINSEC)	// PWM loops per velocity calculation
 #define TRANSITION_STEPS   IRP_PERCALC/4
 
-#define SMCGAIN			0.85		// Slide Mode Controller Gain (0.0 to 0.9999)
-#define MAXLINEARSMC    0.005		// If measured current - estimated current
+//#define SMCGAIN			0.85		// Slide Mode Controller Gain (0.0 to 0.9999)
+#define SMCGAIN			0.6
+//#define MAXLINEARSMC    0.005		// If measured current - estimated current
 								// is less than MAXLINEARSMC, the slide mode
 								// Controller will have a linear behavior
 								// instead of ON/OFF. Value from (0.0 to 0.9999)
-
+#define MAXLINEARSMC    0.15
+    
 #define STARTUPRAMP_THETA_OPENLOOP_SCALER       14
 
 #define MAX_VOLTAGE_VECTOR                      0.98

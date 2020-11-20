@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/WANG/KN_FAN/FAN_Working1022_debug_25th/FAN_Working/MainAlgorithom.c</file>
-            <file>file:/C:/Users/WANG/KN_FAN/FAN_Working1022_debug_25th/FAN_Working/userparms.h</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/userparms.h</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/main.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/port_config.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/MainAlgorithom.h</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/pwm.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/board_service.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/clock.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/adc.c</file>
+            <file>file:/C:/Users/WANG/KN_FAN/FAN_KN/hal/port_config.h</file>
         </group>
     </open-files>
 </project-private>
