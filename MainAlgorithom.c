@@ -110,7 +110,7 @@ volatile uint16_t measCurrOffsetFlag = 0;
 
 
 //for project only
-uint8_t ucCount;
+static uint16_t ucCount = 0;
 uint8_t ucCount2;
 
 
@@ -123,8 +123,9 @@ static uint32_t MAM_uiAlignUpdateCount = 0;
 static uint8_t MAM_auiRampList[OPL_RAMP_LIST_NR] = {2,3,4,5,6,7,8,10,12,14,16,16};
 static uint32_t MAM_ulInterruptCount = 0;
 static uint8_t MAM_ucRampListID = 0;
-static uint16_t MAM_auiSpeedList[5] = {1500,1300,1200,1000,800};
+static uint16_t MAM_auiSpeedList[5] = {800, 1000, 1200, 1300, 1500};
 static uint8_t MAM_ucSpeedListID = 0;
+static uint8_t MAM_ucDCBusVoltage = 0;
 /****************************function declration***************************/        
 void InitControlParameters(void);
 void DoControl(void);
@@ -144,7 +145,7 @@ void MAM_vApplicationInitialization(void)
     MAM_ulInterruptCount = 0;
     MAM_ucRampListID = 0;
     
-    MAM_tControlData.uiDescendAscend = DESCENDING;
+    MAM_tControlData.uiDescendAscend = ASCENDING;
     MAM_ucSpeedListID = 0;
 }
 
@@ -924,7 +925,7 @@ void MAM_vMotorControl(void)
             HAL_MC1PWMEnableOutputs();
             uGF.bits.RunMotor = 1;
             MAM_tControlData.uiSystemState = SYS_RUN;
-            MAM_vSetTargetSpeed(NOMINAL_SPEED_RPM);
+            MAM_vSetTargetSpeed(MAM_auiSpeedList[0]);
         }
 
     }
@@ -956,44 +957,50 @@ void MAM_vMotorSpeedAdjustment(void)
 			   }
 		}
 	}*/
+    
+
     if(MAM_tControlData.uiSystemState == SYS_RUN)
     {
-        if(IsPressed_Button2() == 1)
+        MAM_vUpdateLimitSpeedBasedOnCheckVoltage();
+        if(MAM_ucDCBusVoltage > VOL_120VDC)
         {
-            if(MAM_tControlData.uiDescendAscend == DESCENDING)
+            if(IsPressed_Button2() == 1)
             {
-                if(MAM_ucSpeedListID == 4)
+                if(MAM_tControlData.uiDescendAscend == ASCENDING)
                 {
-                    MAM_tControlData.uiDescendAscend = ASCENDING;
-                }
-                else
-                {            
-                    MAM_ucSpeedListID = MAM_ucSpeedListID + 1;
-                    MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
-                }
-                //for safety
-                if (MAM_tControlData.uiTargetSpeed < MAM_tControlPara.tSpeedControlParameter.uiMinSpeed)
-                   {
-                       MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMinSpeed;
-
-                   }
-            }
-            else
-            {
-                if(MAM_ucSpeedListID == 0)
-                {
-                    MAM_tControlData.uiDescendAscend = DESCENDING;
+                    if(MAM_ucSpeedListID == 4)
+                    {
+                        MAM_tControlData.uiDescendAscend = DESCENDING;
+                    }
+                    else
+                    {            
+                        MAM_ucSpeedListID = MAM_ucSpeedListID + 1;
+                        MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
+                    }
+                    //for safety
+                    if (MAM_tControlData.uiTargetSpeed > MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed)
+                       {
+                           MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed;
+                       }
                 }
                 else
                 {
-                    MAM_ucSpeedListID = MAM_ucSpeedListID - 1;
-                    MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
-                }
+                    if(MAM_ucSpeedListID == 0)
+                    {
+                        MAM_tControlData.uiDescendAscend = ASCENDING;
+                    }
+                    else
+                    {
+                        MAM_ucSpeedListID = MAM_ucSpeedListID - 1;
+                        MAM_tControlData.uiTargetSpeed = NOPOLESPAIRS*MAM_auiSpeedList[MAM_ucSpeedListID];
+                    }
 
-                if (MAM_tControlData.uiTargetSpeed > MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed)
-                   {
-                       MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed;
-                   }
+                    if (MAM_tControlData.uiTargetSpeed < MAM_tControlPara.tSpeedControlParameter.uiMinSpeed)
+                    {
+                        MAM_tControlData.uiTargetSpeed =  MAM_tControlPara.tSpeedControlParameter.uiMinSpeed;
+
+                    }
+                }
             }
         }
     }
@@ -1036,7 +1043,8 @@ MC_ABC_T MAM_tGetThreePhaseCurrent(void)
 
 //set target speed interface
 void MAM_vSetTargetSpeed(uint16_t uiTargetSpeed)
-{
+{  
+    
     if(MAM_tControlData.uiSystemState == SYS_RUN)
     {
          MAM_tControlData.uiTargetSpeed = uiTargetSpeed*NOPOLESPAIRS;
@@ -1059,4 +1067,52 @@ void MAM_vSetTargetSpeed(uint16_t uiTargetSpeed)
 uint16_t MAM_uiGetCurrentSpeed(void)
 {
 	return smc1.OmegaFltred;
+}
+
+void MAM_v8CalculateBusVoltage(void)
+{
+    uint32_t uiTempValue = 0;
+    uiTempValue = ADC1BUF0 + BUS_VOL_RESOLUTION;
+    uiTempValue = uiTempValue/100;
+    uiTempValue = uiTempValue*BUS_VOL_CAL_FACTOR;
+    uiTempValue = uiTempValue/BUS_VOL_RESOLUTION;
+    MAM_ucDCBusVoltage = uiTempValue;
+    
+}
+
+void MAM_10MSTimer(void)
+{
+    if(ucCount >= TIM_10MS_CONST)
+    {
+        ucCount = 0;
+        MAM_v8CalculateBusVoltage();
+    }
+}
+
+void MAM_vUpdateLimitSpeedBasedOnCheckVoltage(void)
+{
+    if((MAM_ucDCBusVoltage >= VOL_77VDC)&&(MAM_ucDCBusVoltage <=VOL_100VDC))
+     {
+        MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed = VOL_77VDC_MAX_SPEED*NOPOLESPAIRS;
+        MAM_tControlData.uiTargetSpeed = MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed;
+        MAM_tControlData.uiDescendAscend = ASCENDING;
+        MAM_ucSpeedListID = 0;
+     }
+     else
+     {
+         if((MAM_ucDCBusVoltage > VOL_100VDC)&&(MAM_ucDCBusVoltage <=VOL_120VDC))
+         {
+             MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed = VOL_100VDC_MAX_SPEED*NOPOLESPAIRS;
+             MAM_tControlData.uiTargetSpeed = MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed; 
+             MAM_tControlData.uiDescendAscend = ASCENDING;
+             MAM_ucSpeedListID = 1;
+         }
+         else
+         {
+             if(MAM_ucDCBusVoltage > VOL_120VDC)
+             {
+                 MAM_tControlPara.tSpeedControlParameter.uiMaxSpeed = VOL_120VDC_MAX_SPEED*NOPOLESPAIRS;
+             }
+         }
+     }
 }

@@ -99,6 +99,12 @@ enum DIRECTION
     DESCENDING
 };
 
+enum DC_VOLTAGE
+{
+    VOL_77VDC = 77,
+    VOL_100VDC = 100,
+    VOL_120VDC = 120
+};
 #define ALIGN_TIME 500//milisecond
 
 #define ALIGN_REF_FACTOR     5
@@ -113,7 +119,7 @@ enum DIRECTION
 
 #define SPD_CONTROL_PARA {MAXIMUM_SPEED_RPM*NOPOLESPAIRS, END_SPEED_RPM*NOPOLESPAIRS}
 
-#define CONTROL_INT_DATA {SYS_IDLE, 0, DESCENDING}
+#define CONTROL_INT_DATA {SYS_IDLE, 0, ASCENDING}
 
 #define OPL_RAMP_LIST_NR 12
 
@@ -125,6 +131,18 @@ enum DIRECTION
 
 #define DEBUG_SPEED_STEP      10
 #define DEBUG_SPEED_STEP_ELEC DEBUG_SPEED_STEP*NOPOLESPAIRS
+
+#define BUS_VOL_CAL_FACTOR     7815//Voltage calciulate factor
+
+#define BUS_VOL_RESOLUTION     32767
+
+#define TIM_10MS_CONST    200
+
+#define VOL_77VDC_MAX_SPEED    1000
+
+#define VOL_100VDC_MAX_SPEED   1200
+
+#define VOL_120VDC_MAX_SPEED   1500
 
 /*******************************function claraficaion********************/
     //first initialization
@@ -155,6 +173,12 @@ extern TBackEmf MAM_tGetBackEmf(void);
 extern void MAM_vMotorSpeedAdjustment(void);
 
 extern void MAM_vApplicationInitialization(void);
+
+extern void MAM_v8CalculateBusVoltage(void);
+
+extern void MAM_10MSTimer(void);
+
+extern void MAM_vUpdateLimitSpeedBasedOnCheckVoltage(void);
 #ifdef	__cplusplus
 }
 #endif

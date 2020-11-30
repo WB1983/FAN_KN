@@ -8,6 +8,10 @@
 #include  "MMI.h"
 #include "X2CScopeCommunication.h"
 #include "X2CScope.h"
+static uint16_t MAM_uiVbus = 0;
+static uint16_t MAM_uiPhaseA = 0;
+static uint16_t MAM_uiPhaseB = 0;
+static uint16_t MAM_uiPhaseC = 0;
 
 int main ( void )
 {
@@ -22,6 +26,12 @@ int main ( void )
             
     while(1)
     {
+        MAM_uiVbus = ADCBUF_SPEED_REF_A;
+        MAM_uiPhaseA = ADCBUF_INV_A_IPHASE1;
+        MAM_uiPhaseB = ADCBUF_INV_A_IPHASE2;
+        
+        MAM_10MSTimer();
+        
         MAM_vFeedExternalWatchdog();
 
 //        DiagnosticsStepMain();
